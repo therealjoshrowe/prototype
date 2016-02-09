@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Windows.Storage;
+using Windows.Foundation;
 
 namespace Prototype
 {
@@ -17,40 +18,40 @@ namespace Prototype
             nexusOb = n;
         }
 
-        public async void WriteToFile()
+        public async Task WriteToFile()
         {
 
-            string path = @"c:\temp\MyTest.txt";
+            StorageFile file = await DownloadsFolder.CreateFileAsync("output.nex");
 
-            if (!System.IO.File.Exists(path))
+            if (! (file == null))
             {
-                // Create a file to write to.
-                using (StreamWriter file = File.CreateText(path))
+                // Create a file to write to
+
+                List<String> info = new List<String>();
+                info.Add("#NEXUS");
+                info.Add("BEGIN TAXA;");
+                info.Add("Dimensions NTax=\"" + nexusOb.T.taxa.Count + "\"");
+                info.Add("TaxLabels ");
+
+                foreach (string taxon in nexusOb.T.taxa)
                 {
-                    System.IO.TextWriter
-                    file.WriteLine("#NEXUS");
-                    file.WriteLine("BEGIN TAXA;");
-                    file.WriteLine("Dimensions NTax=" + nexusOb.T.taxa.Count);
-                    file.Write("TaxLabels ");
-
-                    foreach (string taxon in nexusOb.T.taxa)
-                    {
-                        file.Write(taxon + " ");
-                    }
-                    file.WriteLine();
-
-                    file.WriteLine("END;");
-
-                    file.WriteLine("BEGIN CHARACTERS;");
-                    file.WriteLine(@"DIMENSIONS NChar=""");
-                    file.WriteLine("MATRIX");
-                    foreach (Sequence s in App.f.C.sequences)
-                    {
-                        file.WriteLine(s.name + " " + s.characters);
-                    }
-                    file.WriteLine(";");
-                    file.WriteLine("END;");
+                    info.Add(taxon + " ");
                 }
+                info.Add("\n");
+
+                info.Add("END;");
+
+                info.Add("BEGIN CHARACTERS;");
+                info.Add(@"DIMENSIONS NChar=""");
+                info.Add("MATRIX");
+                foreach (Sequence s in App.f.C.sequences)
+                {
+                    info.Add(s.name + " " + s.characters);
+                }
+                info.Add(";");
+                info.Add("END;");
+                await FileIO.WriteLinesAsync(file, info);                   
+                
             }
             
 
