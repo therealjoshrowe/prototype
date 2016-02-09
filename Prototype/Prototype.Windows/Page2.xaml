@@ -8,7 +8,8 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="textBox" AcceptsReturn="True" HorizontalAlignment="Center" Height="96" TextWrapping="Wrap" Text="Enter Matrix data . EX.&#xD;&#xA;cat: ACTG" VerticalAlignment="Top" Width="300"/>
+        <StackPanel x:Name="panel">
+        </StackPanel>
         <Button x:Name="button" Content="Next" HorizontalAlignment="Center" Margin="0,96,0,0" VerticalAlignment="Top" Width="300" Height="35" Click="button_Click"/>
     </Grid>
 </Page>
