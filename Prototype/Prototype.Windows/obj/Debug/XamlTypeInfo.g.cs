@@ -124,19 +124,21 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[5];
+            _typeNameTable = new string[6];
             _typeNameTable[0] = "Prototype.MainPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[3] = "Prototype.Page2";
             _typeNameTable[4] = "Prototype.Page3";
+            _typeNameTable[5] = "Prototype.SequenceDataInput";
 
-            _typeTable = new global::System.Type[5];
+            _typeTable = new global::System.Type[6];
             _typeTable[0] = typeof(global::Prototype.MainPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[3] = typeof(global::Prototype.Page2);
             _typeTable[4] = typeof(global::Prototype.Page3);
+            _typeTable[5] = typeof(global::Prototype.SequenceDataInput);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -210,6 +212,12 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
             case 4:   //  Prototype.Page3
                 userType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_4_Page3;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 5:   //  Prototype.SequenceDataInput
+                userType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -547,6 +555,5 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
         }
     }
 }
-
 
 

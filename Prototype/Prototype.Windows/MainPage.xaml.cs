@@ -37,7 +37,9 @@ namespace Prototype
             {
                 App.f.T.taxa.Add(ele);
             }
-            this.Frame.Navigate(typeof(Page2));
+            // this.Frame.Navigate(typeof(Page2));
+            this.Frame.Navigate(typeof(SequenceDataInput), App.f.T.taxa);
+    
         }
     }
 }

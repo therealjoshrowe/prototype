@@ -121,6 +121,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sequence.cs" />
+    <Compile Include="SequenceDataInput.xaml.cs">
+      <DependentUpon>SequenceDataInput.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TaxaBlock.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Page3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SequenceDataInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

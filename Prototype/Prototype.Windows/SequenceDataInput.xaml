@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Prototype.SequenceDataInput"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Prototype"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <TextBlock Text="Sequence Data" HorizontalAlignment="Center" FontSize="30" Foreground="Orange" Height="50"></TextBlock>
+            <Button x:Name="button" Content="Next" HorizontalAlignment="Right" Click="button_Click"/>
+        </StackPanel>
+        <ScrollViewer Name ="ScrollSeq" Grid.Row="2" VerticalScrollBarVisibility="Auto">
+
+            <StackPanel Name="SeqFrame">
+
+
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel >
+
+
+        </StackPanel>
+    </Grid>
+</Page>
