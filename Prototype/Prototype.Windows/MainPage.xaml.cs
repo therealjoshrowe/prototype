@@ -23,6 +23,7 @@ namespace Prototype
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        
         public MainPage()
         {
             this.InitializeComponent();
@@ -33,11 +34,19 @@ namespace Prototype
             App.f.T = new TaxaBlock();
             String s = textBox.Text.ToString();
             String[] array = s.Split(new char[] { ' ' });
-            foreach (String ele in array)
-            {
-                App.f.T.taxa.Add(ele);
+            foreach (object child in panel.Children) {
+                TextBox box = (TextBox)child; // we should tyoe check this
+                App.f.T.taxa.Add(box.Text.ToString());
             }
             this.Frame.Navigate(typeof(Page2));
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            var fields = Int32.Parse(textBox.Text.ToString()); //need to validate data to prevent exception.
+            for (var i = 0; i < fields; i++) {
+                panel.Children.Add(new TextBox() { Text = "animal" + i, Name = "textBox" + i, Margin = new Thickness(0, 10, 0, 0) });
+            }
         }
     }
 }
