@@ -9,19 +9,22 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <TextBlock Text="Sequence Data" HorizontalAlignment="Center" FontSize="30" Foreground="Orange" Height="50"></TextBlock>
-            <Button x:Name="button" Content="Next" HorizontalAlignment="Right" Click="button_Click"/>
+            <TextBlock Text="Sequence Data" HorizontalAlignment="Center" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
+            <Button x:Name="button" Content="Next" IsEnabled="True" HorizontalAlignment="Right" Click="btnValidate_Click"/>
         </StackPanel>
-        <ScrollViewer Name ="ScrollSeq" Grid.Row="2" VerticalScrollBarVisibility="Auto">
+
+        <StackPanel Name="ReportErrors" RenderTransformOrigin="0.508,-1.192" Margin="255,79,153,535">
+            <ScrollViewer  Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65">
+
+            </ScrollViewer>
+        </StackPanel>
+        <ScrollViewer Name ="ScrollSeq" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="450">
 
             <StackPanel Name="SeqFrame">
 
 
             </StackPanel>
         </ScrollViewer>
-        <StackPanel >
 
-
-        </StackPanel>
     </Grid>
 </Page>
