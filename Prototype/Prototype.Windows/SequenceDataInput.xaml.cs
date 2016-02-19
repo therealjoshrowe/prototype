@@ -28,7 +28,7 @@ namespace Prototype
         private List<TextBox> TaxaText;
         private List<TextBox> DataText;
         private List<String> Taxa;
-
+        private int charLength;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -38,9 +38,19 @@ namespace Prototype
         public SequenceDataInput()
         {
             this.InitializeComponent();
+            App.f.C = new CharactersBlock();
+            if (charLength == 0)
+            {
+                charLength = 20;
+            }
+            
+            if (App.f.C.dataSelection == 0)
+            {
+                App.f.C.dataSelection = 3;
+            }
         }
         public void DynamicText(List<String> x)
-        {
+        { 
             this.InitializeComponent();
             numOfTaxaPanels = x.Count;//reference main obj and however many taxa were previously entered
             TaxaText = new List<TextBox>();
@@ -100,24 +110,48 @@ namespace Prototype
         {
             List<TextBox> taxaErrors = new List<TextBox>();
             List<String> stringErrors = new List<String>();
-            for(int i=0; i< TaxaText.Count; i++)
+         
+                
+         
+            for (int i=0; i< TaxaText.Count; i++)
             {
                 TaxaText[i].Background = new SolidColorBrush(Colors.Black);
                 DataText[i].Background = new SolidColorBrush(Colors.LightGray);
+                TextBox matrixBox = DataText[i];
                 if (string.IsNullOrEmpty(TaxaText[i].Text))
                 {
                     taxaErrors.Add(TaxaText[i]);
                     stringErrors.Add("Empty input value.");
                     TaxaText[i].Background = new SolidColorBrush(Colors.LightSalmon);
                 }
-                if (string.IsNullOrEmpty(DataText[i].Text))
+                if (string.IsNullOrEmpty(matrixBox.Text))
                 {
-                    taxaErrors.Add(DataText[i]);
+                    taxaErrors.Add(matrixBox);
                     stringErrors.Add("Empty input value.");
                     DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
                 }
+                else if (matrixBox.Text.Length != charLength)
+                {
+                    stringErrors.Add("Matrix doesn't have " + charLength + " characters.");
+                    DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
+                
+                 }
+                else if (App.f.C.dataSelection  ==3)
+                {
+                    List<char> charList = new List<char> { 'G', 'g', 'A', 'a', 'T', 't', 'C', 'c', App.f.C.gapChar, App.f.C.missingChar };
+                    for(int x=0; x< matrixBox.Text.Length; x++)
+                    {
+                        if(!charList.Contains(matrixBox.Text[x]))
+                        {
+                            stringErrors.Add("Protein Matrix contains obscure characters. Only G,A,T,C or the chosen gap and missing characters permitted.");
+                            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
+                            break;
+                        }
+                    }
+                   
+                }
             }
-            if (taxaErrors.Count > 0)
+            if (stringErrors.Count > 0)
             {                
                 TextBox ErrorText = new TextBox();
                 ErrorText.Name = "errors";
@@ -143,7 +177,7 @@ namespace Prototype
           //  App.f.C = new Seq();
             List<String> TaxaStrings = new List<String>();
             List<String> DataStrings = new List<String>();
-                App.f.C = new CharactersBlock();
+                
                 App.f.C.sequences = new List<Sequence>();
             foreach (TextBox s in TaxaText)
             {

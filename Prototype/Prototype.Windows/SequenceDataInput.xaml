@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <TextBlock Text="Sequence Data" HorizontalAlignment="Center" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
+            <TextBlock Text="Matrix Data" HorizontalAlignment="Center" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
             <Button x:Name="button" Content="Next" IsEnabled="True" HorizontalAlignment="Right" Click="btnValidate_Click"/>
         </StackPanel>
 
