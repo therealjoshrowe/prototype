@@ -14,11 +14,11 @@
         </StackPanel>
 
         <StackPanel Name="ReportErrors" RenderTransformOrigin="0.508,-1.192" Margin="255,79,153,535">
-            <ScrollViewer  Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65">
+            <ScrollViewer  Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65" Margin="236,0,228,0">
 
             </ScrollViewer>
         </StackPanel>
-        <ScrollViewer Name ="ScrollSeq" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="450">
+        <ScrollViewer Name ="ScrollSeq" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="450" Margin="180,159,153,159">
 
             <StackPanel Name="SeqFrame">
 
