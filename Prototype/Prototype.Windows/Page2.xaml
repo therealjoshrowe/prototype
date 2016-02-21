@@ -9,6 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel x:Name="panel">
+            <Button x:Name="button1" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </StackPanel>
         <Button x:Name="button" Content="Next" HorizontalAlignment="Center" Margin="0,96,0,0" VerticalAlignment="Top" Width="300" Height="35" Click="button_Click"/>
     </Grid>
