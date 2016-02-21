@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="Prototype.SequenceDataInput"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Prototype"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <TextBlock Text="Matrix Data" HorizontalAlignment="Center" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
+            <Button x:Name="button" Content="Next" IsEnabled="True" Background="Orange" Foreground="Black" HorizontalAlignment="Right" Click="btnValidate_Click"/>
+        </StackPanel>
+
+        <StackPanel Name="ReportErrors" RenderTransformOrigin="0.508,-1.192" Margin="255,79,153,535">
+            <ScrollViewer  Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65">
+
+            </ScrollViewer>
+        </StackPanel>
+        <ScrollViewer Name ="ScrollSeq" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="450">
+
+            <StackPanel Name="SeqFrame">
+
+
+            </StackPanel>
+        </ScrollViewer>
+        <Button x:Name="btnAdd" Content="Add Row" IsEnabled="True" Background="Orange" Foreground="Black" HorizontalAlignment="Right" Click="btnAdd_Click"/>
+    </Grid>
+</Page>

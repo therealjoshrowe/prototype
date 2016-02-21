@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Shared_Code
 {
@@ -8,6 +9,7 @@ namespace Shared_Code
         public string name;
         [XmlAttribute("Characters")]
         public string characters;
+        public List<string> charsString;
 
         public Sequence(string n, string c)
         {

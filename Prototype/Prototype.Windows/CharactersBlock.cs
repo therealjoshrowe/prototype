@@ -7,5 +7,17 @@ namespace Shared_Code
     {
         [XmlElement("Sequences")]
         public List<Sequence> sequences = new List<Sequence>();
+        public int ncharValue;
+        public char missingChar;
+        public char gapChar;
+        public int dataSelection=0;
+        public string SequenceChars;
+        public string MorphChars;
+        public enum InputDataType {
+            Sequence=1,
+            Morphological=2,
+            Protein=3
+
+        }
     }
 }
