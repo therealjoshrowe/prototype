@@ -10,7 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <TextBlock Text="Matrix Data" HorizontalAlignment="Center" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
-            <Button x:Name="button" Content="Next" IsEnabled="True" HorizontalAlignment="Right" Click="btnValidate_Click"/>
+            <Button x:Name="button" Content="Next" IsEnabled="True" Background="Orange" Foreground="Black" HorizontalAlignment="Right" Click="btnValidate_Click"/>
         </StackPanel>
 
         <StackPanel Name="ReportErrors" RenderTransformOrigin="0.508,-1.192" Margin="255,79,153,535">
@@ -25,6 +25,6 @@
 
             </StackPanel>
         </ScrollViewer>
-
+        <Button x:Name="btnAdd" Content="Add Row" IsEnabled="True" Background="Orange" Foreground="Black" HorizontalAlignment="Right" Click="btnAdd_Click"/>
     </Grid>
 </Page>

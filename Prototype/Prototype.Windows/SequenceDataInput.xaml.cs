@@ -94,17 +94,103 @@ namespace Prototype
                 tbData.TextWrapping = TextWrapping.Wrap;
                 DataText.Add(tbData);
 
-                StackPanel s = new StackPanel();
+                Button btnRemove = new Button();
+                btnRemove.Content = "Remove";
+                btnRemove.IsEnabled = true;
+                btnRemove.HorizontalAlignment = HorizontalAlignment.Right;
+                btnRemove.Click += btnRemove_Click;
+           //       < Button x: Name = "button" Content = "Next" IsEnabled = "True" HorizontalAlignment = "Right" Click = "btnValidate_Click" />
+
+
+                          StackPanel s = new StackPanel();
                 s.Name = "SequencePanel" + i;
                 s.Orientation = Orientation.Horizontal;
                 s.HorizontalAlignment = HorizontalAlignment.Center;
                 s.Children.Add(tbTaxa);
                 s.Children.Add(tbData);
+                s.Children.Add(btnRemove);
                 // s.Children.Add();
+                //need to add remove button for each row then add button at the bottim
                 SeqFrame.Children.Add(s);
             }
             ScrollSeq.Content = SeqFrame;
-            var count = SeqFrame;
+        }
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            //remove the stackpanel that this button is located in
+            //   sender.
+            var dc = (sender as Button).Parent as StackPanel;
+            for(int i=0; i<TaxaText.Count; i++)
+            {
+                if(dc.Children.Contains(TaxaText[i]))
+                    {
+                    TaxaText.Remove(TaxaText[i]);
+                }
+                if (dc.Children.Contains(DataText[i]))
+                {
+                    TaxaText.Remove(DataText[i]);
+                }
+            }
+            
+            (dc.Parent as StackPanel).Children.Remove(dc);
+            //remove the textboxes from the list of textboxes a the tpo
+        }
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            //add stackpanel with text boxes and remove button
+            TextBox tbTaxa = new TextBox();
+            tbTaxa.AcceptsReturn = true;
+            Thickness m1 = tbTaxa.Margin;
+            m1.Left = 10;
+            tbTaxa.Margin = m1;
+            tbTaxa.Width = 100;
+            tbTaxa.Height = 30;
+            Thickness m3 = tbTaxa.Padding;
+            m3.Left = 20;
+            m3.Bottom = 20;
+            tbTaxa.FontSize = 14;
+            tbTaxa.Foreground = new SolidColorBrush(Colors.Orange);
+            tbTaxa.Background = new SolidColorBrush(Colors.Black);
+            // tbTaxa.Padding = 15;
+            TaxaText.Add(tbTaxa);
+
+
+            ///////////////////////////padding
+            TextBox tbData = new TextBox();
+            tbData.AcceptsReturn = true;
+            Thickness m2 = tbData.Margin;
+            m2.Left = 10;
+            tbData.Margin = m2;
+            Thickness m4 = tbData.Padding;
+            m4.Left = 20;
+            m4.Bottom = 50;
+            tbData.Width = 300;
+            tbData.Height = 150;
+            tbData.FontSize = 14;
+            tbData.Background = new SolidColorBrush(Colors.LightGray);
+            tbData.TextWrapping = TextWrapping.Wrap;
+            DataText.Add(tbData);
+
+            Button btnRemove = new Button();
+            btnRemove.Content = "Remove";
+            btnRemove.IsEnabled = true;
+            btnRemove.HorizontalAlignment = HorizontalAlignment.Right;
+            btnRemove.Click += btnRemove_Click;
+            //       < Button x: Name = "button" Content = "Next" IsEnabled = "True" HorizontalAlignment = "Right" Click = "btnValidate_Click" />
+
+
+            StackPanel s = new StackPanel();
+            s.Orientation = Orientation.Horizontal;
+            s.HorizontalAlignment = HorizontalAlignment.Center;
+            s.Children.Add(tbTaxa);
+            s.Children.Add(tbData);
+            s.Children.Add(btnRemove);
+            // s.Children.Add();
+            //need to add remove button for each row then add button at the bottim
+            SeqFrame.Children.Add(s);
+        
+        ScrollSeq.Content = SeqFrame;
+            //add textboxes to list above so they can be validated
         }
         private void btnValidate_Click(object sender, RoutedEventArgs e)
         {
@@ -136,6 +222,51 @@ namespace Prototype
                     DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
                 
                  }
+                else if (App.f.C.dataSelection == 1)
+                {
+                    // List<char> charList = new List<char> { 'G', 'g', 'A', 'a', 'T', 't', 'C', 'c', App.f.C.gapChar, App.f.C.missingChar };
+                    string error;
+                    string seqchars = App.f.C.SequenceChars;
+                    for (int x = 0; x < matrixBox.Text.Length; x++)
+                    {
+                        if (!seqchars.Contains(matrixBox.Text[x]))
+                        {
+                            error = "Protein Matrix contains obscure characters. Only ";// or the chosen gap and missing characters permitted.");
+                            for(int r=0; r< seqchars.Length; r++)
+                            {
+                                error += seqchars[r] + ", ";
+                            }
+                            error += "or the chosen gap and missing characters permitted.";
+                            stringErrors.Add(error);
+                            error = "";
+                            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
+                            break;
+                        }
+                    }
+
+                }
+                else if (App.f.C.dataSelection == 2)
+                {
+                    string error;
+                    string morphchars = App.f.C.MorphChars;
+                    for (int x = 0; x < matrixBox.Text.Length; x++)
+                    {
+                        if (!morphchars.Contains(matrixBox.Text[x]))
+                        {
+                            error = "Protein Matrix contains obscure characters. Only ";// or the chosen gap and missing characters permitted.");
+                            for (int r = 0; r < morphchars.Length; r++)
+                            {
+                                error += morphchars[r] + ", ";
+                            }
+                            error += "or the chosen gap and missing characters permitted.";
+                            stringErrors.Add(error);
+                            error = "";
+                            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
+                            break;
+                        }
+                    }
+
+                }
                 else if (App.f.C.dataSelection  ==3)
                 {
                     List<char> charList = new List<char> { 'G', 'g', 'A', 'a', 'T', 't', 'C', 'c', App.f.C.gapChar, App.f.C.missingChar };

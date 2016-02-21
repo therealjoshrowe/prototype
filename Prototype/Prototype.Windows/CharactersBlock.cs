@@ -11,6 +11,8 @@ namespace Shared_Code
         public char missingChar;
         public char gapChar;
         public int dataSelection=0;
+        public string SequenceChars;
+        public string MorphChars;
         public enum InputDataType {
             Sequence=1,
             Morphological=2,

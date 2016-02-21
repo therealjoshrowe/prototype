@@ -99,3 +99,4 @@ C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\Prototype.Windows.csproj.GenerateResource.Cache
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\Xamarin.Forms.Platform.WinRT.pri.xml
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\Xamarin.Forms.Platform.WinRT.Tablet.pri.xml
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\Prototype.Windows.csprojResolveAssemblyReference.cache
