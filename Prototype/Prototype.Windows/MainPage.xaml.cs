@@ -24,10 +24,12 @@ namespace Prototype
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private List<TextBox> TaxaText;
 
         public MainPage()
         {
             this.InitializeComponent();
+            TaxaText = new List<TextBox>();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -48,12 +50,36 @@ namespace Prototype
                 {
                     App.f.T.taxa.Add(box.Text.ToString());
                 }
-               
+
             }
-            if(errors.Count==0)
+            if (errors.Count == 0)
             {
                 this.Frame.Navigate(typeof(SequenceDataInput), App.f.T.taxa);
             }
+            else
+            {
+            
+            if (errors.Count > 0)
+            {
+                TextBox ErrorText = new TextBox();
+                ErrorText.Name = "errors";
+                ErrorText.Width = 300;
+                ErrorText.Height = 300;
+                ErrorText.FontSize = 12;
+                ErrorText.TextWrapping = TextWrapping.Wrap;
+                ErrorText.Background = new SolidColorBrush(Colors.Gainsboro);
+                ErrorText.Text = "The following " + errors.Count + " errors must be fixed before you can continue: " + System.Environment.NewLine;
+                for (int i = 0; i < errors.Count; i++)
+                {
+                    ErrorText.Text += errors[i] + System.Environment.NewLine;
+                }
+                StackPanel sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
+                sp.HorizontalAlignment = HorizontalAlignment.Center;
+                sp.Children.Add(ErrorText);
+                ScrollError.Content = sp;
+            }
+        }
             
         }
 
@@ -63,10 +89,13 @@ namespace Prototype
             for (int j = 0; j < BodyPanel.Children.Count(); j++)
             {
                 BodyPanel.Children.RemoveAt(j);
+                TaxaText.RemoveAt(j);
             }
             for (var i = 0; i < fields; i++)
             {
-                BodyPanel.Children.Add(new TextBox() { Text = "animal" + i, Name = "textBox" + i, Margin = new Thickness(0, 10, 0, 0), Width = 150, HorizontalAlignment = HorizontalAlignment.Center });
+                TextBox tb = new TextBox() { Text = "animal" + i, Name = "textBox" + i, Margin = new Thickness(0, 10, 0, 0), Width = 150, HorizontalAlignment = HorizontalAlignment.Center };
+                TaxaText.Add(tb);
+                BodyPanel.Children.Add(tb);
             }
         }
     }

@@ -9,17 +9,21 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel x:Name="mainPanel" Margin="10,10,10,-10" >
-            <StackPanel x:Name="subpanel1" Orientation="Horizontal" RenderTransformOrigin="0.498,1.986" Margin="131,0,164,0">
-                <TextBlock x:Name="textBlock" Margin="0, 0, 0, 0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter the number of taxa ---&gt;" VerticalAlignment="Top" Height="63" Width="424" FontSize="32" FontFamily="Segoe UI"/>
+            <StackPanel x:Name="subpanel1" Orientation="Horizontal" RenderTransformOrigin="0.498,1.986" Margin="131,0,164,0" Height="111">
+                <TextBlock x:Name="textBlock" Margin="0, 0, 0, 0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter the number of taxa ---&gt;" Foreground="Orange" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI"/>
                 <TextBox x:Name="textBox" Margin="50, 0, 0, 0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="63" Width="129" FontSize="24"/>
-                <Button x:Name="button1" Margin="50, 0, 0, 0" Content="Make Fields" HorizontalAlignment="Left" Height="50" Width="239" FontSize="24" Click="button1_Click"/>
+                <Button x:Name="button1" Margin="50, 0, 0, 0" Content="Make Fields" HorizontalAlignment="Right"  Background="Orange" Foreground="Black" VerticalAlignment="Top" FontSize="20" Click="button1_Click"/>
+
             </StackPanel>
-            <StackPanel x:Name="panel" Margin="0,50,0,0">
+            <StackPanel x:Name="ReportErrors"  Height="175" >
+                <ScrollViewer  x:Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" />
             </StackPanel>
-            <StackPanel Name="BodyPanel" Margin="194,0,164,0">
+            <StackPanel x:Name="panel" Margin="0,50,0,0"/>
+            <StackPanel x:Name="BodyPanel" Margin="194,0,164,0">
+
             </StackPanel>
-            <StackPanel Name="FooterPanel">
-                <Button x:Name="button" Margin="395,50,387,0" Content="Next" HorizontalAlignment="Center"  Width="206" Height="100" Click="button_Click" FontSize="24" RenderTransformOrigin="0.5,0.535"/>
+            <StackPanel x:Name="FooterPanel">
+                <Button x:Name="button" Margin="395,50,387,0" Content="Next" HorizontalAlignment="Center"   Background="Orange" Foreground="Black" Click="button_Click" FontSize="24" RenderTransformOrigin="0.5,0.535"/>
 
             </StackPanel>
         </StackPanel>

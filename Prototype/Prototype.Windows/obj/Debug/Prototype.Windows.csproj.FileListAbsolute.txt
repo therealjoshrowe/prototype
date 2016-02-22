@@ -100,3 +100,8 @@ C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\Xamarin.Forms.Platform.WinRT.pri.xml
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\Xamarin.Forms.Platform.WinRT.Tablet.pri.xml
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\Prototype.Windows.csprojResolveAssemblyReference.cache
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\bin\Debug\FirstChoiceScreen.xbf
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\FirstChoiceScreen.g.i.cs
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\FirstChoiceScreen.g.cs
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\FirstChoiceScreen.xaml
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\FirstChoiceScreen.xbf

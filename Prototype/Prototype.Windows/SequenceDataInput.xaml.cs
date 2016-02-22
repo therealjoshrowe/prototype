@@ -329,5 +329,10 @@ namespace Prototype
             //NavigationService nav = NavigationService.GetNavigationService(this);
             //nav.Navigate(new Page3());
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
