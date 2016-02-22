@@ -34,7 +34,7 @@ namespace Prototype
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            App.f.T = new TaxaBlock();
+            App.f.C = new CharactersBlock();
             List<string> errors = new List<string>();
             String s = textBox.Text.ToString();
             String[] array = s.Split(new char[] { ' ' });
@@ -48,13 +48,13 @@ namespace Prototype
                 }
                 else
                 {
-                    App.f.T.taxa.Add(box.Text.ToString());
+                    App.f.C.taxa.Add(box.Text.ToString());
                 }
 
             }
             if (errors.Count == 0)
             {
-                this.Frame.Navigate(typeof(SequenceDataInput), App.f.T.taxa);
+                this.Frame.Navigate(typeof(CharactersPage), App.f.C);
             }
             else
             {

@@ -7,6 +7,8 @@ namespace Shared_Code
     {
         [XmlElement("Sequences")]
         public List<Sequence> sequences = new List<Sequence>();
+        [XmlElement("Taxa")]
+        public List<string> taxa = new List<string>();
         public int ncharValue;
         public char missingChar;
         public char gapChar;

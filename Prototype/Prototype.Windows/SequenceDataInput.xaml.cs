@@ -32,22 +32,23 @@ namespace Prototype
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Taxa = e.Parameter as List<String>;
-            DynamicText(Taxa);
-        }
-        public SequenceDataInput()
-        {
-            this.InitializeComponent();
             App.f.C = new CharactersBlock();
+            App.f.C = e.Parameter as CharactersBlock;
             if (charLength == 0)
             {
                 charLength = 20;
             }
-            
+
             if (App.f.C.dataSelection == 0)
             {
                 App.f.C.dataSelection = 3;
             }
+            DynamicText(App.f.C.taxa);
+        }
+        public SequenceDataInput()
+        {
+            this.InitializeComponent();
+           
         }
         public void DynamicText(List<String> x)
         { 
