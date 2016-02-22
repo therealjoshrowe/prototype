@@ -18,8 +18,8 @@ namespace Shared_Code
         public enum InputDataType {
             Sequence=1,
             Morphological=2,
-            Protein=3
+            Protein=3,
 
-        }
+        };
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -39,7 +40,26 @@ namespace Prototype
         }
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            string x = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
+            //turn everything back to gray
+            comboBox.Background = new SolidColorBrush(Colors.LightGray);
+            charNum.Background = new SolidColorBrush(Colors.LightGray);
+            GapChar.Background = new SolidColorBrush(Colors.LightGray);
+            MissingChar.Background = new SolidColorBrush(Colors.LightGray);
+
+            try
+            {
+                string x = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
+                App.f.C.dataSelection = (int)(CharactersBlock.InputDataType)(Enum.Parse(typeof(CharactersBlock.InputDataType), x));
+
+            }
+            catch (Exception)
+            {
+
+                stringErrors.Add("Must choose a data type to create a Nexus file");
+                comboBox.Background = new SolidColorBrush(Colors.LightSalmon);
+
+
+            }            
             int nCharNum;
           // var dataSelect = (App.f.C.Inpj) Enum.Parse(typeof(App.f.C.InputDataType), x);
             try {
@@ -49,14 +69,17 @@ namespace Prototype
             {
                 nCharNum = 0;
                 stringErrors.Add("Must enter an integer into the number of characters per matrix field.");
+                charNum.Background = new SolidColorBrush(Colors.LightSalmon);
             }
             if (GapChar.Text.Length == 0 || GapChar.Text.Length>1)
             {
                 stringErrors.Add("Must enter one character into the GAP character field.");
+                GapChar.Background = new SolidColorBrush(Colors.LightSalmon);
             }
             if (MissingChar.Text.Length == 0 || MissingChar.Text.Length > 1)
             {
-                stringErrors.Add("Must enter one character into the GAP character field.");
+                stringErrors.Add("Must enter one character into the MISSING character field.");
+                MissingChar.Background = new SolidColorBrush(Colors.LightSalmon);
             }
             if(stringErrors.Count ==0)
             {
@@ -68,6 +91,23 @@ namespace Prototype
             else
             {
                 //report errors
+                TextBox ErrorText = new TextBox();
+                ErrorText.Name = "errors";
+                ErrorText.Width = 300;
+                ErrorText.Height = 300;
+                ErrorText.FontSize = 12;
+                ErrorText.TextWrapping = TextWrapping.Wrap;
+                ErrorText.Background = new SolidColorBrush(Colors.Gainsboro);
+                ErrorText.Text = "The following " + stringErrors.Count + " errors must be fixed before you can continue: " + System.Environment.NewLine;
+                for (int i = 0; i < stringErrors.Count; i++)
+                {
+                    ErrorText.Text += stringErrors[i] + System.Environment.NewLine;
+                }
+                StackPanel s = new StackPanel();
+                s.Orientation = Orientation.Horizontal;
+                s.HorizontalAlignment = HorizontalAlignment.Center;
+                s.Children.Add(ErrorText);
+                ErrorScroll.Content = s;
             }
         }
     }
