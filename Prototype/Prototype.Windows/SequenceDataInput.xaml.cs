@@ -34,6 +34,7 @@ namespace Prototype
         {
             App.f.C = new CharactersBlock();
             App.f.C = e.Parameter as CharactersBlock;
+            charLength = App.f.C.ncharValue;
             if (charLength == 0)
             {
                 charLength = 20;

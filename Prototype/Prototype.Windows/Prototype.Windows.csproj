@@ -140,7 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />
-    <Content Include="Assets\phyloSplash3.jpg" />
+    <Content Include="Assets\phyloSplash3.scale-180.jpg" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
   </ItemGroup>
