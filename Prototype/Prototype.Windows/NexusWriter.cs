@@ -30,10 +30,10 @@ namespace Prototype
                 List<String> info = new List<String>();
                 info.Add("#NEXUS");
                 info.Add("BEGIN TAXA;");
-                info.Add("Dimensions NTax=\"" + nexusOb.T.taxa.Count + "\"");
+                info.Add("Dimensions NTax=\"" + nexusOb.C.taxa.Count + "\"");
                 info.Add("TaxLabels ");
 
-                foreach (string taxon in nexusOb.T.taxa)
+                foreach (string taxon in nexusOb.C.taxa)
                 {
                     info.Add(taxon + " ");
                 }
@@ -42,7 +42,8 @@ namespace Prototype
                 info.Add("END;");
 
                 info.Add("BEGIN CHARACTERS;");
-                info.Add(@"DIMENSIONS NChar=""");
+                info.Add("DIMENSIONS NChar=" + nexusOb.C.ncharValue);
+                info.Add("FORMAT missing=" + nexusOb.C.missingChar + " gap =" + nexusOb.C.gapChar);
                 info.Add("MATRIX");
                 foreach (Sequence s in App.f.C.sequences)
                 {

@@ -7,6 +7,8 @@ namespace Shared_Code
     {
         [XmlElement("Sequences")]
         public List<Sequence> sequences = new List<Sequence>();
+        [XmlElement("Taxa")]
+        public List<string> taxa = new List<string>();
         public int ncharValue;
         public char missingChar;
         public char gapChar;
@@ -16,8 +18,8 @@ namespace Shared_Code
         public enum InputDataType {
             Sequence=1,
             Morphological=2,
-            Protein=3
+            Protein=3,
 
-        }
+        };
     }
 }

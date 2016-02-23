@@ -148,21 +148,25 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[6];
-            _typeNameTable[0] = "Prototype.MainPage";
+            _typeNameTable = new string[8];
+            _typeNameTable[0] = "Prototype.CharactersPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "Prototype.Page2";
-            _typeNameTable[4] = "Prototype.Page3";
-            _typeNameTable[5] = "Prototype.SequenceDataInput";
+            _typeNameTable[3] = "Prototype.FirstChoiceScreen";
+            _typeNameTable[4] = "Prototype.MainPage";
+            _typeNameTable[5] = "Prototype.Page2";
+            _typeNameTable[6] = "Prototype.Page3";
+            _typeNameTable[7] = "Prototype.SequenceDataInput";
 
-            _typeTable = new global::System.Type[6];
-            _typeTable[0] = typeof(global::Prototype.MainPage);
+            _typeTable = new global::System.Type[8];
+            _typeTable[0] = typeof(global::Prototype.CharactersPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::Prototype.Page2);
-            _typeTable[4] = typeof(global::Prototype.Page3);
-            _typeTable[5] = typeof(global::Prototype.SequenceDataInput);
+            _typeTable[3] = typeof(global::Prototype.FirstChoiceScreen);
+            _typeTable[4] = typeof(global::Prototype.MainPage);
+            _typeTable[5] = typeof(global::Prototype.Page2);
+            _typeTable[6] = typeof(global::Prototype.Page3);
+            _typeTable[7] = typeof(global::Prototype.SequenceDataInput);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -197,10 +201,12 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::Prototype.MainPage(); }
-        private object Activate_3_Page2() { return new global::Prototype.Page2(); }
-        private object Activate_4_Page3() { return new global::Prototype.Page3(); }
-        private object Activate_5_SequenceDataInput() { return new global::Prototype.SequenceDataInput(); }
+        private object Activate_0_CharactersPage() { return new global::Prototype.CharactersPage(); }
+        private object Activate_3_FirstChoiceScreen() { return new global::Prototype.FirstChoiceScreen(); }
+        private object Activate_4_MainPage() { return new global::Prototype.MainPage(); }
+        private object Activate_5_Page2() { return new global::Prototype.Page2(); }
+        private object Activate_6_Page3() { return new global::Prototype.Page3(); }
+        private object Activate_7_SequenceDataInput() { return new global::Prototype.SequenceDataInput(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -212,9 +218,9 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  Prototype.MainPage
+            case 0:   //  Prototype.CharactersPage
                 userType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+                userType.Activator = Activate_0_CharactersPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -227,23 +233,37 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
                 xamlType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  Prototype.Page2
+            case 3:   //  Prototype.FirstChoiceScreen
                 userType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_Page2;
+                userType.Activator = Activate_3_FirstChoiceScreen;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  Prototype.Page3
+            case 4:   //  Prototype.MainPage
                 userType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_4_Page3;
+                userType.Activator = Activate_4_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 5:   //  Prototype.SequenceDataInput
+            case 5:   //  Prototype.Page2
                 userType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_5_SequenceDataInput;
+                userType.Activator = Activate_5_Page2;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 6:   //  Prototype.Page3
+                userType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_6_Page3;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 7:   //  Prototype.SequenceDataInput
+                userType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_7_SequenceDataInput;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

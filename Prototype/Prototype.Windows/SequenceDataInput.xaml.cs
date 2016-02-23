@@ -32,22 +32,24 @@ namespace Prototype
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Taxa = e.Parameter as List<String>;
-            DynamicText(Taxa);
-        }
-        public SequenceDataInput()
-        {
-            this.InitializeComponent();
             App.f.C = new CharactersBlock();
+            App.f.C = e.Parameter as CharactersBlock;
+            charLength = App.f.C.ncharValue;
             if (charLength == 0)
             {
                 charLength = 20;
             }
-            
+
             if (App.f.C.dataSelection == 0)
             {
                 App.f.C.dataSelection = 3;
             }
+            DynamicText(App.f.C.taxa);
+        }
+        public SequenceDataInput()
+        {
+            this.InitializeComponent();
+           
         }
         public void DynamicText(List<String> x)
         { 
@@ -222,65 +224,65 @@ namespace Prototype
                     DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
                 
                  }
-                else if (App.f.C.dataSelection == 1)
-                {
-                    // List<char> charList = new List<char> { 'G', 'g', 'A', 'a', 'T', 't', 'C', 'c', App.f.C.gapChar, App.f.C.missingChar };
-                    string error;
-                    string seqchars = App.f.C.SequenceChars;
-                    for (int x = 0; x < matrixBox.Text.Length; x++)
-                    {
-                        if (!seqchars.Contains(matrixBox.Text[x]))
-                        {
-                            error = "Protein Matrix contains obscure characters. Only ";// or the chosen gap and missing characters permitted.");
-                            for(int r=0; r< seqchars.Length; r++)
-                            {
-                                error += seqchars[r] + ", ";
-                            }
-                            error += "or the chosen gap and missing characters permitted.";
-                            stringErrors.Add(error);
-                            error = "";
-                            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
-                            break;
-                        }
-                    }
+                //else if (App.f.C.dataSelection == 1)
+                //{
+                //    // List<char> charList = new List<char> { 'G', 'g', 'A', 'a', 'T', 't', 'C', 'c', App.f.C.gapChar, App.f.C.missingChar };
+                //    string error;
+                //    string seqchars = App.f.C.SequenceChars;
+                //    for (int x = 0; x < matrixBox.Text.Length; x++)
+                //    {
+                //        if (!seqchars.Contains(matrixBox.Text[x]))
+                //        {
+                //            error = "Protein Matrix contains obscure characters. Only ";// or the chosen gap and missing characters permitted.");
+                //            for(int r=0; r< seqchars.Length; r++)
+                //            {
+                //                error += seqchars[r] + ", ";
+                //            }
+                //            error += "or the chosen gap and missing characters permitted.";
+                //            stringErrors.Add(error);
+                //            error = "";
+                //            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
+                //            break;
+                //        }
+                //    }
 
-                }
-                else if (App.f.C.dataSelection == 2)
-                {
-                    string error;
-                    string morphchars = App.f.C.MorphChars;
-                    for (int x = 0; x < matrixBox.Text.Length; x++)
-                    {
-                        if (!morphchars.Contains(matrixBox.Text[x]))
-                        {
-                            error = "Protein Matrix contains obscure characters. Only ";// or the chosen gap and missing characters permitted.");
-                            for (int r = 0; r < morphchars.Length; r++)
-                            {
-                                error += morphchars[r] + ", ";
-                            }
-                            error += "or the chosen gap and missing characters permitted.";
-                            stringErrors.Add(error);
-                            error = "";
-                            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
-                            break;
-                        }
-                    }
+                //}
+                //else if (App.f.C.dataSelection == 2)
+                //{
+                //    string error;
+                //    string morphchars = App.f.C.MorphChars;
+                //    for (int x = 0; x < matrixBox.Text.Length; x++)
+                //    {
+                //        if (!morphchars.Contains(matrixBox.Text[x]))
+                //        {
+                //            error = "Protein Matrix contains obscure characters. Only ";// or the chosen gap and missing characters permitted.");
+                //            for (int r = 0; r < morphchars.Length; r++)
+                //            {
+                //                error += morphchars[r] + ", ";
+                //            }
+                //            error += "or the chosen gap and missing characters permitted.";
+                //            stringErrors.Add(error);
+                //            error = "";
+                //            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
+                //            break;
+                //        }
+                //    }
 
-                }
-                else if (App.f.C.dataSelection  ==3)
-                {
-                    List<char> charList = new List<char> { 'G', 'g', 'A', 'a', 'T', 't', 'C', 'c', App.f.C.gapChar, App.f.C.missingChar };
-                    for(int x=0; x< matrixBox.Text.Length; x++)
-                    {
-                        if(!charList.Contains(matrixBox.Text[x]))
-                        {
-                            stringErrors.Add("Protein Matrix contains obscure characters. Only G,A,T,C or the chosen gap and missing characters permitted.");
-                            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
-                            break;
-                        }
-                    }
+                //}
+                //else if (App.f.C.dataSelection  ==3)
+                //{
+                //    List<char> charList = new List<char> { 'G', 'g', 'A', 'a', 'T', 't', 'C', 'c', App.f.C.gapChar, App.f.C.missingChar };
+                //    for(int x=0; x< matrixBox.Text.Length; x++)
+                //    {
+                //        if(!charList.Contains(matrixBox.Text[x]))
+                //        {
+                //            stringErrors.Add("Protein Matrix contains obscure characters. Only G,A,T,C or the chosen gap and missing characters permitted.");
+                //            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
+                //            break;
+                //        }
+                //    }
                    
-                }
+                //}
             }
             if (stringErrors.Count > 0)
             {                
@@ -328,6 +330,11 @@ namespace Prototype
 
             //NavigationService nav = NavigationService.GetNavigationService(this);
             //nav.Navigate(new Page3());
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

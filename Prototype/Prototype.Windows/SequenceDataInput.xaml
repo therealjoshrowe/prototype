@@ -11,14 +11,16 @@
         <StackPanel>
             <TextBlock Text="Matrix Data" HorizontalAlignment="Center" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
             <Button x:Name="button" Content="Next" IsEnabled="True" Background="Orange" Foreground="Black" HorizontalAlignment="Right" Click="btnValidate_Click"/>
+            <!--<Button x:Name="btnBack" Content="Back" IsEnabled="True" Background="Orange" Foreground="Black" HorizontalAlignment="Left" Click="btnBack_Click"/>-->
+
         </StackPanel>
 
         <StackPanel Name="ReportErrors" RenderTransformOrigin="0.508,-1.192" Margin="255,79,153,535">
-            <ScrollViewer  Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65">
+            <ScrollViewer  Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65" Margin="236,0,228,0">
 
             </ScrollViewer>
         </StackPanel>
-        <ScrollViewer Name ="ScrollSeq" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="450">
+        <ScrollViewer Name ="ScrollSeq" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="450" Margin="180,159,153,159">
 
             <StackPanel Name="SeqFrame">
 

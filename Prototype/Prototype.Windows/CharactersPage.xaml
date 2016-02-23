@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="Prototype.CharactersPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Prototype"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <StackPanel Margin="97,0,145,0" >
+            <TextBox Name="title" Text="Character Information"  HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Background="Black" Foreground="Orange" FontSize="40"></TextBox>
+            <Button Name="btnNext" Content="Next" HorizontalAlignment="Right" Background="Orange" Foreground="Black" Click="btnNext_Click"></Button>
+
+            <ScrollViewer Name ="ErrorScroll" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65" Margin="293,0,309,0"></ScrollViewer>
+            <StackPanel >
+                <TextBox x:Name="dataTypeLabel"  Text="What type data are you wanting to process?"  HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="20,50,0,0"/>
+                <ComboBox x:Name="comboBox" Width="200" Margin="0,-50,200,0" >
+                    <ComboBoxItem x:Name="cbi1" Content="Sequence" />
+
+                    <ComboBoxItem x:Name="cbi3" Content="Morphological"/>
+                    <ComboBoxItem  x:Name="cbi2" Content="Protein"/>
+                </ComboBox>
+
+            </StackPanel>
+            <TextBox x:Name="charNumLabel" Text="How many characters per matrix?"  HorizontalAlignment="Left" TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="20,50,0,0"/>
+            <TextBox x:Name="charNum" Width ="100" HorizontalAlignment="Left" Margin="412,-80,0,0" FontSize="24"/>
+            <StackPanel>
+                <TextBox x:Name="GapLabel" Text="Please choose a GAP character."  HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200"  FontSize="24" Background="Black" Foreground="Orange" Margin="20,50,0,0"/>
+                <TextBox x:Name="GapChar" Width ="100" HorizontalAlignment="Left" Margin="400,-50,0,0" FontSize="24"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBox x:Name="MissingLabel" Text="Please choose a MISSING character."  HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="20,50,10,10"/>
+                <TextBox x:Name="MissingChar" Width ="100" Margin="300,-90,512,-10" FontSize="24"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>
