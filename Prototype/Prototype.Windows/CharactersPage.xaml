@@ -14,25 +14,27 @@
             <Button Name="btnNext" Content="Next" HorizontalAlignment="Right" Background="Orange" Foreground="Black" Click="btnNext_Click"></Button>
 
             <ScrollViewer Name ="ErrorScroll" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65" Margin="293,0,309,0"></ScrollViewer>
-            <StackPanel >
-                <TextBox x:Name="dataTypeLabel"  Text="What type data are you wanting to process?"  HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="20,50,0,0"/>
-                <ComboBox x:Name="comboBox" Width="200" Margin="0,-50,200,0" >
+            <StackPanel Orientation="Horizontal"  >
+                <TextBox x:Name="dataTypeLabel"  Text="What type data are you wanting to process?"   HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="0,0,200,50"/>
+                <ComboBox x:Name="comboBox" Width="200" Margin="0,0,200,50" >
                     <ComboBoxItem x:Name="cbi1" Content="Sequence" />
 
                     <ComboBoxItem x:Name="cbi3" Content="Morphological"/>
                     <ComboBoxItem  x:Name="cbi2" Content="Protein"/>
                 </ComboBox>
 
+            </StackPanel >
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="charNumLabel" Text="How many characters per matrix?"  Margin="0,0,200,50" HorizontalAlignment="Left" TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" />
+                <TextBox x:Name="charNum" Width ="200" Margin="0,0,0,50" HorizontalAlignment="Left"  FontSize="24"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" >
+                <TextBox x:Name="GapLabel" Text="Please choose a GAP character." Margin="0,0,200,50" HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200"  FontSize="24" Background="Black" Foreground="Orange" />
+                <TextBox x:Name="GapChar" Width ="200" HorizontalAlignment="Left" Margin="0,0,0,50" FontSize="24"/>
             </StackPanel>
-            <TextBox x:Name="charNumLabel" Text="How many characters per matrix?"  HorizontalAlignment="Left" TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="20,50,0,0"/>
-            <TextBox x:Name="charNum" Width ="100" HorizontalAlignment="Left" Margin="412,-80,0,0" FontSize="24"/>
-            <StackPanel>
-                <TextBox x:Name="GapLabel" Text="Please choose a GAP character."  HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200"  FontSize="24" Background="Black" Foreground="Orange" Margin="20,50,0,0"/>
-                <TextBox x:Name="GapChar" Width ="100" HorizontalAlignment="Left" Margin="400,-50,0,0" FontSize="24"/>
-            </StackPanel>
-            <StackPanel>
-                <TextBox x:Name="MissingLabel" Text="Please choose a MISSING character."  HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="20,50,10,10"/>
-                <TextBox x:Name="MissingChar" Width ="100" Margin="300,-90,512,-10" FontSize="24"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="MissingLabel" Text="Please choose a MISSING character." Margin="0,0,200,50" HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" />
+                <TextBox x:Name="MissingChar" Width ="200" Margin="0,0,0,50" FontSize="24"/>
             </StackPanel>
 
         </StackPanel>

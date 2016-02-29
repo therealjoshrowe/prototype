@@ -109,3 +109,4 @@ C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\CharactersPage.g.cs
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\CharactersPage.xaml
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\CharactersPage.xbf
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\Prototype.Windows.csprojResolveAssemblyReference.cache
