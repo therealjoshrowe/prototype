@@ -194,6 +194,11 @@ namespace Prototype
         ScrollSeq.Content = SeqFrame;
             //add textboxes to list above so they can be validated
         }
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CharactersPage), App.f.C);
+        }
+
         private void btnValidate_Click(object sender, RoutedEventArgs e)
         {
             List<TextBox> taxaErrors = new List<TextBox>();
@@ -220,8 +225,9 @@ namespace Prototype
                 }
                 else if (matrixBox.Text.Length != charLength)
                 {
-                    stringErrors.Add("Matrix doesn't have " + charLength + " characters.");
+                    stringErrors.Add("Matrix doesn't have " + charLength + " characters. Needs ");
                     DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
+
                 
                  }
                 //else if (App.f.C.dataSelection == 1)
@@ -332,9 +338,6 @@ namespace Prototype
             //nav.Navigate(new Page3());
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     }
 }

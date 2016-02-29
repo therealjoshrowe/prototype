@@ -8,14 +8,16 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <TextBlock Text="Matrix Data" HorizontalAlignment="Center" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
-            <Button x:Name="button" Content="Next" IsEnabled="True" Background="Orange" Foreground="Black" HorizontalAlignment="Right" Click="btnValidate_Click"/>
-            <!--<Button x:Name="btnBack" Content="Back" IsEnabled="True" Background="Orange" Foreground="Black" HorizontalAlignment="Left" Click="btnBack_Click"/>-->
+       
+            <TextBlock Text="Matrix Data" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="127,0,65,636">
+            <Button x:Name="btnBack" Content="Back" IsEnabled="True" Background="Orange" Foreground="Black" Margin="0, 50, 1000, 0"  Click="btnBack_Click"/>
+            <Button x:Name="button" Content="Next" IsEnabled="True" Background="Orange" Foreground="Black" Margin="0, 50, 0, 0" Click="btnValidate_Click"/>
+       
 
         </StackPanel>
 
-        <StackPanel Name="ReportErrors" RenderTransformOrigin="0.508,-1.192" Margin="255,79,153,535">
+        <StackPanel Name="ReportErrors" >
             <ScrollViewer  Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65" Margin="236,0,228,0">
 
             </ScrollViewer>
