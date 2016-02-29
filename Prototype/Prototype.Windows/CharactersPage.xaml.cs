@@ -110,5 +110,9 @@ namespace Prototype
                 ErrorScroll.Content = s;
             }
         }
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {//Goes back to Taxa Page
+            this.Frame.Navigate(typeof(MainPage), App.f.C);
+        }
     }
 }

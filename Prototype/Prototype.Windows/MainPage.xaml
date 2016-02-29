@@ -13,7 +13,7 @@
                 
                 <TextBlock x:Name="textBlock" Margin="0, 0, 0, 0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter the number of taxa: " Foreground="Orange" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI"/>
                 <TextBox x:Name="textBox" Margin="50, 0, 0, 0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="63" Width="129" FontSize="24"/>
-                <Button x:Name="button1" Margin="50, 0, 0, 0" Content="Make Fields" HorizontalAlignment="Right"  Background="Orange" Foreground="Black" VerticalAlignment="Top" FontSize="20" Click="button1_Click"/>
+                <Button x:Name="btnMakeFields" Margin="50, 0, 0, 0" Content="Make Fields" HorizontalAlignment="Right"  Background="Orange" Foreground="Black" VerticalAlignment="Top" FontSize="20" Click="btnMakeFields_Click"/>
 
             </StackPanel>
             <StackPanel x:Name="ReportErrors"  Height="175" >
@@ -24,7 +24,7 @@
 
             </StackPanel>
             <StackPanel x:Name="FooterPanel">
-                <Button x:Name="button" Margin="395,50,387,0" Content="Next" HorizontalAlignment="Center"   Background="Orange" Foreground="Black" Click="button_Click" FontSize="24" RenderTransformOrigin="0.5,0.535"/>
+                <Button x:Name="btnNext" Margin="395,50,387,0" Content="Next" HorizontalAlignment="Center"   Background="Orange" Foreground="Black" Click="btnNext_Click" FontSize="24" RenderTransformOrigin="0.5,0.535"/>
 
             </StackPanel>
         </StackPanel>

@@ -25,14 +25,35 @@ namespace Prototype
     public sealed partial class MainPage : Page
     {
         private List<TextBox> TaxaText;
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            App.f.C = new CharactersBlock();
+            App.f.C = e.Parameter as CharactersBlock;
+            if(App.f.C != null)
+            {
+                LoadPreviousDataToScreen(App.f.C);
+            }
+            //  DynamicText(Taxa);
+        }
 
         public MainPage()
         {
             this.InitializeComponent();
             TaxaText = new List<TextBox>();
+            
+        }
+        private void LoadPreviousDataToScreen(CharactersBlock charBlock)
+        {
+            var fields = charBlock.taxa.Count;
+            for (var i = 0; i < fields; i++)
+            {
+                TextBox tb = new TextBox() { Text = charBlock.taxa[i], Name = "textBox" + i, Margin = new Thickness(0, 10, 0, 0), Width = 150, HorizontalAlignment = HorizontalAlignment.Center };
+                TaxaText.Add(tb);
+                BodyPanel.Children.Add(tb);
+            }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             App.f.C = new CharactersBlock();
             List<string> errors = new List<string>();
@@ -83,7 +104,7 @@ namespace Prototype
             
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void btnMakeFields_Click(object sender, RoutedEventArgs e)
         {
             var fields = Int32.Parse(textBox.Text.ToString()); //need to validate data to prevent exception.
             for (int j = 0; j < BodyPanel.Children.Count(); j++)
