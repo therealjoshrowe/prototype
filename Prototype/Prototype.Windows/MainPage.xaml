@@ -6,27 +6,31 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel x:Name="mainPanel" Margin="10,10,10,-10" >
-            <StackPanel x:Name="subpanel1" Orientation="Horizontal" RenderTransformOrigin="0.498,1.986" Margin="131,0,164,0" Height="111">
-                <TextBlock x:Name="textBlock" Margin="0, 0, 0, 0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter the number of taxa ---&gt;" Foreground="Orange" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI"/>
-                <TextBox x:Name="textBox" Margin="50, 0, 0, 0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="63" Width="129" FontSize="24"/>
-                <Button x:Name="button1" Margin="50, 0, 0, 0" Content="Make Fields" HorizontalAlignment="Right"  Background="Orange" Foreground="Black" VerticalAlignment="Top" FontSize="20" Click="button1_Click"/>
-
+    <StackPanel x:Name="mainPanel" Margin="0,0,0,0" Grid.RowSpan="2" Height="813" VerticalAlignment="top" >
+        <AppBar Background="Aqua" RenderTransformOrigin="0,0" Height="106">
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton x:Name="appBarButton1" Icon="OpenFile" Label="File" Margin="0, 0, 0, 0" Click="appBarButton1_Click"/>
+                <AppBarButton x:Name="appBarButton2" Icon="Page"  Label="Main Page" Margin="0, 0, 0,0" Click="appBarButton2_Click"/>
+                <AppBarButton x:Name="appBarButton3" Icon="Page"  Label="Characters Page" Margin="0, 0, 0,0" Click="appBarButton3_Click"/>
+                <AppBarButton x:Name="appBarButton4" Icon="Page"  Label="Matrix Page" Margin="0, 0, 0,0" Click="appBarButton4_Click"/>
+                <AppBarButton x:Name="appBarButton5" Icon="Page"  Label="Create Page" Margin="0, 0, 0,0" Click="appBarButton5_Click"/>
             </StackPanel>
-            <StackPanel x:Name="ReportErrors"  Height="175" >
-                <ScrollViewer  x:Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" />
-            </StackPanel>
-            <StackPanel x:Name="panel" Margin="0,50,0,0"/>
-            <StackPanel x:Name="BodyPanel" Margin="194,0,164,0">
+        </AppBar>
+        <StackPanel x:Name="subpanel1" Orientation="Horizontal" RenderTransformOrigin="0.498,1.986" Margin="131,0,164,0" Height="90">
+            <TextBlock x:Name="textBlock" Margin="0, 0, 0, 0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter the number of taxa ---&gt;" Foreground="Orange" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI"/>
+            <TextBox x:Name="textBox" Margin="50,0,0,27" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Width="129" FontSize="24"/>
+            <Button x:Name="button1" Margin="50, 0, 0, 0" Content="Make Fields" HorizontalAlignment="Right"  Background="Orange" Foreground="Black" VerticalAlignment="Top" FontSize="20" Click="button1_Click"/>
 
-            </StackPanel>
-            <StackPanel x:Name="FooterPanel">
-                <Button x:Name="button" Margin="395,50,387,0" Content="Next" HorizontalAlignment="Center"   Background="Orange" Foreground="Black" Click="button_Click" FontSize="24" RenderTransformOrigin="0.5,0.535"/>
-
-            </StackPanel>
         </StackPanel>
-    </Grid>
+        <StackPanel x:Name="ReportErrors"  Height="234" >
+            <ScrollViewer  x:Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" />
+        </StackPanel>
+        <StackPanel x:Name="panel" Margin="0,50,0,0"/>
+        <StackPanel x:Name="BodyPanel" Margin="194,0,164,0"/>
+        <StackPanel x:Name="FooterPanel">
+            <Button x:Name="button" Margin="395,50,387,0" Content="Next" HorizontalAlignment="Center"   Background="Orange" Foreground="Black" Click="button_Click" FontSize="24" RenderTransformOrigin="0.5,0.535"/>
+
+        </StackPanel>
+    </StackPanel>
 </Page>
 

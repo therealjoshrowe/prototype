@@ -9,6 +9,15 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
+            <AppBar Background="Aqua" RenderTransformOrigin="0,0" Height="106">
+                <StackPanel Orientation="Horizontal">
+                    <AppBarButton x:Name="appBarButton1" Icon="OpenFile" Label="File" Margin="0, 0, 0, 0" Click="appBarButton1_Click"/>
+                    <AppBarButton x:Name="appBarButton2" Icon="Page"  Label="Main Page" Margin="0, 0, 0,0" Click="appBarButton2_Click"/>
+                    <AppBarButton x:Name="appBarButton3" Icon="Page"  Label="Characters Page" Margin="0, 0, 0,0" Click="appBarButton3_Click"/>
+                    <AppBarButton x:Name="appBarButton4" Icon="Page"  Label="Matrix Page" Margin="0, 0, 0,0" Click="appBarButton4_Click"/>
+                    <AppBarButton x:Name="appBarButton5" Icon="Page"  Label="Create Page" Margin="0, 0, 0,0" Click="appBarButton5_Click"/>
+                </StackPanel>
+            </AppBar>
             <TextBlock Text="Matrix Data" HorizontalAlignment="Center" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
             <Button x:Name="button" Content="Next" IsEnabled="True" Background="Orange" Foreground="Black" HorizontalAlignment="Right" Click="btnValidate_Click"/>
             <!--<Button x:Name="btnBack" Content="Back" IsEnabled="True" Background="Orange" Foreground="Black" HorizontalAlignment="Left" Click="btnBack_Click"/>-->

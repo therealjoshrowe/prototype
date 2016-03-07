@@ -98,6 +98,30 @@ namespace Prototype
                 BodyPanel.Children.Add(tb);
             }
         }
+
+        private void appBarButton1_Click(object sender, object e) {
+
+        }
+
+        private void appBarButton2_Click(object sender, object e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void appBarButton3_Click(object sender, object e)
+        {
+            this.Frame.Navigate(typeof(CharactersPage));
+        }
+
+        private void appBarButton4_Click(object sender, object e)
+        {
+            this.Frame.Navigate(typeof(SequenceDataInput));
+        }
+
+        private void appBarButton5_Click(object sender, object e)
+        {
+            this.Frame.Navigate(typeof(Page3));
+        }
     }
 }
 

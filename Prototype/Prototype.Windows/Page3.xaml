@@ -8,7 +8,18 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="button" Content="Create NEXUS File" HorizontalAlignment="Center" Margin="38,85,0,0" VerticalAlignment="Center" Width="226" Click="button_Click" Height="73"/>
+        <StackPanel>
+            <AppBar Background="Aqua" RenderTransformOrigin="0,0" Height="106">
+                <StackPanel Orientation="Horizontal">
+                    <AppBarButton x:Name="appBarButton1" Icon="OpenFile" Label="File" Margin="0, 0, 0, 0" Click="appBarButton1_Click"/>
+                    <AppBarButton x:Name="appBarButton2" Icon="Page"  Label="Main Page" Margin="0, 0, 0,0" Click="appBarButton2_Click"/>
+                    <AppBarButton x:Name="appBarButton3" Icon="Page"  Label="Characters Page" Margin="0, 0, 0,0" Click="appBarButton3_Click"/>
+                    <AppBarButton x:Name="appBarButton4" Icon="Page"  Label="Matrix Page" Margin="0, 0, 0,0" Click="appBarButton4_Click"/>
+                    <AppBarButton x:Name="appBarButton5" Icon="Page"  Label="Create Page" Margin="0, 0, 0,0" Click="appBarButton5_Click"/>
+                </StackPanel>
+            </AppBar>
+            <Button x:Name="button" Content="Create NEXUS File" HorizontalAlignment="Center" Margin="38,85,0,0" VerticalAlignment="Center" Width="226" Click="button_Click" Height="73"/>
+        </StackPanel>
 
     </Grid>
 </Page>
