@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.Foundation;
 
 namespace Prototype
@@ -20,14 +21,18 @@ namespace Prototype
 
         public async Task WriteToFile()
         {
+            FileSavePicker fp = new FileSavePicker();
+            fp.DefaultFileExtension = ".nex";
+            fp.SuggestedStartLocation = PickerLocationId.Desktop;
+            fp.FileTypeChoices.Add("NEXUS File", new List<string>() { ".nex" });
+            // Default file name if the user does not type one in or select a file to replace
+            fp.SuggestedFileName = "Output";
 
-            StorageFile file = await DownloadsFolder.CreateFileAsync("output.nex");
-
-            if (! (file == null))
+            StorageFile file = await fp.PickSaveFileAsync();
+            if (file != null)
             {
-                // Create a file to write to
-
-                List<String> info = new List<String>();
+                // Application now has read/write access to the picked file 
+                List<string> info = new List<string>();
                 info.Add("#NEXUS");
                 info.Add("BEGIN TAXA;");
                 info.Add("Dimensions NTax=\"" + nexusOb.C.taxa.Count + "\"");
@@ -51,13 +56,11 @@ namespace Prototype
                 }
                 info.Add(";");
                 info.Add("END;");
-                await FileIO.WriteLinesAsync(file, info);                   
-                
+                await FileIO.WriteLinesAsync(file, info);
             }
-            
 
 
-            
-        }
+
+    }
     }
 }
