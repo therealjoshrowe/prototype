@@ -110,3 +110,8 @@ C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\CharactersPage.xaml
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\CharactersPage.xbf
 C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\Prototype.Windows.csprojResolveAssemblyReference.cache
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\PreviewFile.g.i.cs
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\PreviewFile.g.cs
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\PreviewFile.xaml
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\obj\Debug\PreviewFile.xbf
+C:\Users\misse32807.Gallifrey\Source\Repos\prototype\Prototype\Prototype.Windows\bin\Debug\PreviewFile.xbf

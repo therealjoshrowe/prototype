@@ -330,7 +330,9 @@ namespace Prototype
             {
                 App.f.C.sequences.Add(new Sequence(TaxaStrings[i], DataStrings[i]));
             }
-                this.Frame.Navigate(typeof(Page3));
+                // this.Frame.Navigate(typeof(Page3));
+
+                this.Frame.Navigate(typeof(PreviewFile));
             }
           
 

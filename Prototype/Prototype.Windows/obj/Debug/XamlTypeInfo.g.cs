@@ -148,7 +148,7 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[8];
+            _typeNameTable = new string[9];
             _typeNameTable[0] = "Prototype.CharactersPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
@@ -156,9 +156,10 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
             _typeNameTable[4] = "Prototype.MainPage";
             _typeNameTable[5] = "Prototype.Page2";
             _typeNameTable[6] = "Prototype.Page3";
-            _typeNameTable[7] = "Prototype.SequenceDataInput";
+            _typeNameTable[7] = "Prototype.PreviewFile";
+            _typeNameTable[8] = "Prototype.SequenceDataInput";
 
-            _typeTable = new global::System.Type[8];
+            _typeTable = new global::System.Type[9];
             _typeTable[0] = typeof(global::Prototype.CharactersPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
@@ -166,7 +167,8 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
             _typeTable[4] = typeof(global::Prototype.MainPage);
             _typeTable[5] = typeof(global::Prototype.Page2);
             _typeTable[6] = typeof(global::Prototype.Page3);
-            _typeTable[7] = typeof(global::Prototype.SequenceDataInput);
+            _typeTable[7] = typeof(global::Prototype.PreviewFile);
+            _typeTable[8] = typeof(global::Prototype.SequenceDataInput);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -206,7 +208,8 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
         private object Activate_4_MainPage() { return new global::Prototype.MainPage(); }
         private object Activate_5_Page2() { return new global::Prototype.Page2(); }
         private object Activate_6_Page3() { return new global::Prototype.Page3(); }
-        private object Activate_7_SequenceDataInput() { return new global::Prototype.SequenceDataInput(); }
+        private object Activate_7_PreviewFile() { return new global::Prototype.PreviewFile(); }
+        private object Activate_8_SequenceDataInput() { return new global::Prototype.SequenceDataInput(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -261,9 +264,16 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 7:   //  Prototype.SequenceDataInput
+            case 7:   //  Prototype.PreviewFile
                 userType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_7_SequenceDataInput;
+                userType.Activator = Activate_7_PreviewFile;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 8:   //  Prototype.SequenceDataInput
+                userType = new global::Prototype.Prototype_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_8_SequenceDataInput;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -656,5 +666,6 @@ namespace Prototype.Prototype_Windows_XamlTypeInfo
         }
     }
 }
+
 
 
