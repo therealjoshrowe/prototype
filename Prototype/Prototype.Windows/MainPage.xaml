@@ -8,26 +8,33 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel x:Name="mainPanel" Margin="10,10,10,-10" >
-            <StackPanel x:Name="subpanel1" Orientation="Horizontal" RenderTransformOrigin="0.498,1.986" Margin="131,0,164,0" Height="111">
-                
-                <TextBlock x:Name="textBlock" Margin="0, 0, 0, 0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter the number of taxa: " Foreground="Orange" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI"/>
-                <TextBox x:Name="textBox" Margin="50, 0, 0, 0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="63" Width="129" FontSize="24"/>
-                <Button x:Name="btnMakeFields" Margin="50, 0, 0, 0" Content="Make Fields" HorizontalAlignment="Right"  Background="Orange" Foreground="Black" VerticalAlignment="Top" FontSize="20" Click="btnMakeFields_Click"/>
+        <TextBlock Text="Taxa Data" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
+        <!--<Button x:Name="btnNext" Content="Next" HorizontalAlignment="Center"   Background="Orange" Foreground="Black" Click="btnNext_Click" FontSize="24" />-->
 
-            </StackPanel>
-            <StackPanel x:Name="ReportErrors"  Height="175" >
-                <ScrollViewer  x:Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" />
-            </StackPanel>
-            <StackPanel x:Name="panel" Margin="0,50,0,0"/>
-            <StackPanel x:Name="BodyPanel" Margin="194,0,164,0">
 
-            </StackPanel>
-            <StackPanel x:Name="FooterPanel">
-                <Button x:Name="btnNext" Margin="395,50,387,0" Content="Next" HorizontalAlignment="Center"   Background="Orange" Foreground="Black" Click="btnNext_Click" FontSize="24" RenderTransformOrigin="0.5,0.535"/>
+        <StackPanel Orientation="Horizontal" Margin="100,0,55,700">
+            <TextBox Text="Taxa Count: " HorizontalAlignment="Left" FontSize="14" Height="25" Background="Black" Foreground="Orange"></TextBox>
+            <TextBox Name="TaxaCount" Text="0" HorizontalAlignment="Left" TextAlignment="Center" FontSize="14" Height="25" Background="Black" Foreground="Orange"></TextBox>
 
-            </StackPanel>
+            <!--<Button x:Name="btnBack" Content="Back" IsEnabled="True" Background="Orange" Foreground="Black" Margin="0, 50, 1000, 0"  Click="btnBack_Click"/>-->
+            <Button x:Name="btnNext" Content="Next" IsEnabled="True" Background="Orange" Foreground="Black" Margin="900, 20, 0, 0" Click="btnNext_Click"/>
         </StackPanel>
+        <StackPanel Name="ReportErrors" >
+            <ScrollViewer  Name ="ScrollError" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65" Margin="236,50,228,0">
+
+            </ScrollViewer>
+        </StackPanel>
+        <StackPanel x:Name="TintPanelForAddTaxaButton" Margin="200,180,200,473">
+            <Button x:Name="btnAddTaxa" Content="Add Taxa" IsEnabled="True" Background="Orange" HorizontalAlignment="Center" Foreground="Black" Margin="0, 0, 0, 0" Click="btnAdd_Click"/>
+
+        </StackPanel>
+        <ScrollViewer  x:Name ="ScrollTaxa" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Margin="150,300,150,100">
+            <StackPanel x:Name="BodyPanel" >
+                <!--Add taxa Dynamically here-->
+            </StackPanel>
+
+        </ScrollViewer>
+
     </Grid>
 </Page>
 
