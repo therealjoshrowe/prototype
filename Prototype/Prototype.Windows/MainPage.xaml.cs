@@ -70,6 +70,19 @@ namespace Prototype
             }
                 if (errors.Count == 0)
             {
+                List<String> TaxaStrings = new List<String>();
+
+                App.f.C.sequences = new List<Sequence>();
+                foreach (TextBox s in TaxaText)
+                {
+                    TaxaStrings.Add(s.Text);
+                }
+               
+                for (int i = 0; i < TaxaText.Count; i++)
+                {
+                    App.f.C.taxa.Add(TaxaStrings[i]);
+                }
+                
                 this.Frame.Navigate(typeof(CharactersPage), App.f.C);
             }
             else
