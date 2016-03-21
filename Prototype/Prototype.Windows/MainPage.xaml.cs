@@ -58,6 +58,7 @@ namespace Prototype
             App.f.C = new CharactersBlock();
             List<string> errors = new List<string>();
             List<TextBox> tbErrors = new List<TextBox>();
+         //   errors.Clear();
             for (int i = 0; i < TaxaText.Count; i++)
             {
                 TaxaText[i].Background = new SolidColorBrush(Colors.LightGray);

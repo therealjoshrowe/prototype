@@ -45,7 +45,7 @@ namespace Prototype
             charNum.Background = new SolidColorBrush(Colors.LightGray);
             GapChar.Background = new SolidColorBrush(Colors.LightGray);
             MissingChar.Background = new SolidColorBrush(Colors.LightGray);
-
+            stringErrors.Clear();
             try
             {
                 string x = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
