@@ -332,7 +332,7 @@ namespace Prototype
             }
                 // this.Frame.Navigate(typeof(Page3));
 
-                this.Frame.Navigate(typeof(PreviewFile));
+                this.Frame.Navigate(typeof(PreviewFile), App.f.C);
             }
           
 
