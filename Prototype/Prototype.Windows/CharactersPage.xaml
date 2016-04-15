@@ -21,7 +21,7 @@
             <ScrollViewer Name ="ErrorScroll" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65" Margin="293,0,309,0"></ScrollViewer>
             <StackPanel Orientation="Horizontal"  >
                 <TextBox x:Name="dataTypeLabel"  Text="What type data are you wanting to process?"   HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="0,0,200,50"/>
-                <ComboBox x:Name="comboBox" Width="200" Margin="0,0,200,50" >
+                <ComboBox x:Name="comboBox" Width="200" Margin="0,0,200,50" LostFocus="ValidateDataType_Click">
                     <ComboBoxItem x:Name="cbi1" Content="Sequence" />
 
                     <ComboBoxItem x:Name="cbi3" Content="Morphological"/>

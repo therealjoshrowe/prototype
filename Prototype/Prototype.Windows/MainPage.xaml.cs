@@ -32,7 +32,9 @@ namespace Prototype
         private StackPanel sp;
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            App.f = new NexusFile();
             App.f.C = new CharactersBlock();
+            App.f.C.taxa = new List<string>();
             App.f.C = e.Parameter as CharactersBlock;
             if(App.f.C != null)
             {
@@ -71,7 +73,9 @@ namespace Prototype
             for (var i = 0; i < fields; i++)
             {
                 TextBox tb = new TextBox() { Text = charBlock.taxa[i], Name = "textBox" + i, Margin = new Thickness(0, 10, 0, 0), Width = 150, HorizontalAlignment = HorizontalAlignment.Center };
+                tb.LostFocus += new RoutedEventHandler(TaxaLostFocus);
                 TaxaText.Add(tb);
+         
                 Button btnRemove = new Button();
                 btnRemove.Content = "Remove";
                 btnRemove.IsEnabled = true;
@@ -88,51 +92,7 @@ namespace Prototype
             }
         }
 
-        private bool ValidateFields()
-        {
-            App.f.C = new CharactersBlock();
-           
-            if (errors.Count == 0)
-            {
-            //    List<String> TaxaStrings = new List<String>();
-
-            //    App.f.C.sequences = new List<Sequence>();
-            //    foreach (TextBox s in TaxaText)
-            //    {
-            //        TaxaStrings.Add(s.Text);
-            //    }
-
-            //    for (int i = 0; i < TaxaText.Count; i++)
-            //    {
-            //        App.f.C.taxa.Add(TaxaStrings[i]);
-            //    }
-            return true;
-              //  this.Frame.Navigate(typeof(CharactersPage), App.f.C);
-            }
-            else
-            {
-
-                //TextBox ErrorText = new TextBox();
-                //ErrorText.Name = "errors";
-                //ErrorText.Width = 300;
-                //ErrorText.Height = 300;
-                //ErrorText.FontSize = 12;
-                //ErrorText.TextWrapping = TextWrapping.Wrap;
-                //ErrorText.Background = new SolidColorBrush(Colors.Gainsboro);
-                //ErrorText.Text = "The following " + errors.Count + " errors must be fixed before you can continue: " + System.Environment.NewLine;
-                //for (int i = 0; i < errors.Count; i++)
-                //{
-                //    ErrorText.Text += errors[i] + System.Environment.NewLine;
-                //}
-                //StackPanel sp = new StackPanel();
-                //sp.Orientation = Orientation.Horizontal;
-                //sp.HorizontalAlignment = HorizontalAlignment.Center;
-                //sp.Children.Add(ErrorText);
-                //ScrollError.Content = sp;
-                return false;
-            }
-        }
-
+   
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             bool canContinue = true;
@@ -156,6 +116,11 @@ namespace Prototype
 
             if(canContinue)
                 {
+                    App.f.C = new CharactersBlock();
+                    foreach(var x in TaxaText)
+                    {
+                        App.f.C.taxa.Add(x.Text);
+                    }
                     this.Frame.Navigate(typeof(CharactersPage), App.f.C);
                 }
                 
