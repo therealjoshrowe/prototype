@@ -169,6 +169,7 @@ namespace Prototype
         private void ValidateGapChar_Click(object sender, RoutedEventArgs e)
         {//()[]{} / \ , ; : = * '  ` < > ^
             GapChar.Background = new SolidColorBrush(Colors.LightGray);
+            
             List<int> illegal = new List<int> {32, 34, 39, 40, 41, 42, 44, 47, 58, 59, 60, 62, 61, 94, 96, 91, 92, 93, 123, 125, 127 };
             if (stringErrors.Contains("Must enter one character into the GAP character field."))
             {
@@ -205,6 +206,7 @@ namespace Prototype
             {
                 ErrorText.Visibility = Visibility.Collapsed;
                 ErrorText.Text = "";
+                GapChar.Text = GapChar.Text.ToUpper();
                 App.f.C.gapChar = GapChar.Text[0];
                 GapChar.Background = new SolidColorBrush(Colors.LightGray);
             }
@@ -248,6 +250,7 @@ namespace Prototype
             {
                 ErrorText.Visibility = Visibility.Collapsed;
                 ErrorText.Text = "";
+                MissingChar.Text = MissingChar.Text.ToUpper();
                 App.f.C.missingChar = MissingChar.Text[0];
                 MissingChar.Background = new SolidColorBrush(Colors.LightGray);
             }

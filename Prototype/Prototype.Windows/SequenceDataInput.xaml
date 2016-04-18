@@ -12,7 +12,7 @@
             <TextBlock Text="Matrix Data" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" Foreground="Orange" Height="100" ></TextBlock>
         <StackPanel Orientation="Horizontal" Margin="127,0,65,636">
             <Button x:Name="btnBack" Content="Back" IsEnabled="True" Background="Orange" Foreground="Black" Margin="0, 50, 1000, 0"  Click="btnBack_Click"/>
-            <Button x:Name="button" Content="Next" IsEnabled="True" Background="Orange" Foreground="Black" Margin="0, 50, 0, 0" Click="btnValidate_Click"/>
+            <Button x:Name="button" Content="Next" IsEnabled="True" Background="Orange" Foreground="Black" Margin="0, 50, 0, 0" Click="btnNext_Click"/>
        
 
         </StackPanel>
