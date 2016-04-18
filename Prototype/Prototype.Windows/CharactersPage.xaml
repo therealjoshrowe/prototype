@@ -22,10 +22,10 @@
             <StackPanel Orientation="Horizontal"  >
                 <TextBox x:Name="dataTypeLabel"  Text="What type data are you wanting to process?"   HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="0,0,200,50"/>
                 <ComboBox x:Name="comboBox" Width="200" Margin="0,0,200,50" LostFocus="ValidateDataType_Click">
-                    <ComboBoxItem x:Name="cbi1" Content="Sequence" />
-
-                    <ComboBoxItem x:Name="cbi3" Content="Morphological"/>
-                    <ComboBoxItem  x:Name="cbi2" Content="Protein"/>
+                    <ComboBoxItem x:Name="cbi1" Content="DNA" />
+                    <ComboBoxItem  x:Name="cbi2" Content="RNA"/>                    
+                    <ComboBoxItem  x:Name="cbi3" Content="Protein"/>
+                    <ComboBoxItem x:Name="cbi4" Content="Morphological"/>
                 </ComboBox>
 
             </StackPanel >

@@ -36,7 +36,6 @@ namespace Prototype
                 {
                 LoadPreviousDataToScreen(App.f.C);
             }
-          //  DynamicText(Taxa);
         }
         public CharactersPage()
         {
@@ -46,11 +45,7 @@ namespace Prototype
             charNum.LostFocus += new RoutedEventHandler(ValidateCharNum_Click);
             GapChar.LostFocus += new RoutedEventHandler(ValidateGapChar_Click);
             MissingChar.LostFocus += new RoutedEventHandler(ValidateMissingChar_Click);
-            //    ValidateDataType_Click(sender, e);
-            //ValidateCharNum_Click(sender, e);
-            //ValidateGapChar_Click(sender, e);
-            //ValidateMissingChar_Click(sender, e);
-
+        
 
             stringErrors = new List<string>();
             ErrorText = new TextBox();
@@ -133,6 +128,7 @@ namespace Prototype
             {
                 ErrorText.Visibility = Visibility.Collapsed;
                 ErrorText.Text = "";
+                comboBox.Background = new SolidColorBrush(Colors.LightGray);
             }
         }
         private void ValidateCharNum_Click(object sender, RoutedEventArgs e)
@@ -167,6 +163,7 @@ namespace Prototype
                 ErrorText.Visibility = Visibility.Collapsed;
                 ErrorText.Text = "";
                 App.f.C.ncharValue = nCharNum;
+                charNum.Background = new SolidColorBrush(Colors.LightGray);
             }
         }
         private void ValidateGapChar_Click(object sender, RoutedEventArgs e)
@@ -209,6 +206,7 @@ namespace Prototype
                 ErrorText.Visibility = Visibility.Collapsed;
                 ErrorText.Text = "";
                 App.f.C.gapChar = GapChar.Text[0];
+                GapChar.Background = new SolidColorBrush(Colors.LightGray);
             }
         }
         private void ValidateMissingChar_Click(object sender, RoutedEventArgs e)
@@ -251,6 +249,7 @@ namespace Prototype
                 ErrorText.Visibility = Visibility.Collapsed;
                 ErrorText.Text = "";
                 App.f.C.missingChar = MissingChar.Text[0];
+                MissingChar.Background = new SolidColorBrush(Colors.LightGray);
             }
         }
         private void btnNext_Click(object sender, RoutedEventArgs e)

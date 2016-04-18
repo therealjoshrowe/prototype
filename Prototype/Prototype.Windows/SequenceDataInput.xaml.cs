@@ -27,14 +27,17 @@ namespace Prototype
         private int numOfTaxaPanels;
         private List<TextBox> TaxaText;
         private List<TextBox> DataText;
-        private List<String> Taxa;
         private int charLength;
+
+        List<TextBox> taxaErrors;
+        List<String> stringErrors;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             App.f.C = new CharactersBlock();
             App.f.C = e.Parameter as CharactersBlock;
             charLength = App.f.C.ncharValue;
+            //The following if's are old bad validation?
             if (charLength == 0)
             {
                 charLength = 20;
@@ -49,10 +52,12 @@ namespace Prototype
         public SequenceDataInput()
         {
             this.InitializeComponent();
-           
+            taxaErrors = new List<TextBox>();
+            stringErrors = new List<String>();
+
         }
         public void DynamicText(List<String> x)
-        { 
+        {
             this.InitializeComponent();
             numOfTaxaPanels = x.Count;//reference main obj and however many taxa were previously entered
             TaxaText = new List<TextBox>();
@@ -101,10 +106,10 @@ namespace Prototype
                 btnRemove.IsEnabled = true;
                 btnRemove.HorizontalAlignment = HorizontalAlignment.Right;
                 btnRemove.Click += btnRemove_Click;
-           //       < Button x: Name = "button" Content = "Next" IsEnabled = "True" HorizontalAlignment = "Right" Click = "btnValidate_Click" />
+                //       < Button x: Name = "button" Content = "Next" IsEnabled = "True" HorizontalAlignment = "Right" Click = "btnValidate_Click" />
 
 
-                          StackPanel s = new StackPanel();
+                StackPanel s = new StackPanel();
                 s.Name = "SequencePanel" + i;
                 s.Orientation = Orientation.Horizontal;
                 s.HorizontalAlignment = HorizontalAlignment.Center;
@@ -122,10 +127,10 @@ namespace Prototype
             //remove the stackpanel that this button is located in
             //   sender.
             var dc = (sender as Button).Parent as StackPanel;
-            for(int i=0; i<TaxaText.Count; i++)
+            for (int i = 0; i < TaxaText.Count; i++)
             {
-                if(dc.Children.Contains(TaxaText[i]))
-                    {
+                if (dc.Children.Contains(TaxaText[i]))
+                {
                     TaxaText.Remove(TaxaText[i]);
                 }
                 if (dc.Children.Contains(DataText[i]))
@@ -133,7 +138,7 @@ namespace Prototype
                     TaxaText.Remove(DataText[i]);
                 }
             }
-            
+
             (dc.Parent as StackPanel).Children.Remove(dc);
             //remove the textboxes from the list of textboxes a the tpo
         }
@@ -190,8 +195,8 @@ namespace Prototype
             // s.Children.Add();
             //need to add remove button for each row then add button at the bottim
             SeqFrame.Children.Add(s);
-        
-        ScrollSeq.Content = SeqFrame;
+
+            ScrollSeq.Content = SeqFrame;
             //add textboxes to list above so they can be validated
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -199,99 +204,12 @@ namespace Prototype
             this.Frame.Navigate(typeof(CharactersPage), App.f.C);
         }
 
-        private void btnValidate_Click(object sender, RoutedEventArgs e)
+        private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            List<TextBox> taxaErrors = new List<TextBox>();
-            List<String> stringErrors = new List<String>();
-         
-                
-         
-            for (int i=0; i< TaxaText.Count; i++)
-            {
-                TaxaText[i].Background = new SolidColorBrush(Colors.Black);
-                DataText[i].Background = new SolidColorBrush(Colors.LightGray);
-                TextBox matrixBox = DataText[i];
-                if (string.IsNullOrEmpty(TaxaText[i].Text))
-                {
-                    taxaErrors.Add(TaxaText[i]);
-                    stringErrors.Add("Empty input value.");
-                    TaxaText[i].Background = new SolidColorBrush(Colors.LightSalmon);
-                }
-                if (string.IsNullOrEmpty(matrixBox.Text))
-                {
-                    taxaErrors.Add(matrixBox);
-                    stringErrors.Add("Empty input value.");
-                    DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
-                }
-                else if (matrixBox.Text.Length != charLength)
-                {
-                    stringErrors.Add("Matrix doesn't have " + charLength + " characters. Needs ");
-                    DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
-
-                
-                 }
-                //else if (App.f.C.dataSelection == 1)
-                //{
-                //    // List<char> charList = new List<char> { 'G', 'g', 'A', 'a', 'T', 't', 'C', 'c', App.f.C.gapChar, App.f.C.missingChar };
-                //    string error;
-                //    string seqchars = App.f.C.SequenceChars;
-                //    for (int x = 0; x < matrixBox.Text.Length; x++)
-                //    {
-                //        if (!seqchars.Contains(matrixBox.Text[x]))
-                //        {
-                //            error = "Protein Matrix contains obscure characters. Only ";// or the chosen gap and missing characters permitted.");
-                //            for(int r=0; r< seqchars.Length; r++)
-                //            {
-                //                error += seqchars[r] + ", ";
-                //            }
-                //            error += "or the chosen gap and missing characters permitted.";
-                //            stringErrors.Add(error);
-                //            error = "";
-                //            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
-                //            break;
-                //        }
-                //    }
-
-                //}
-                //else if (App.f.C.dataSelection == 2)
-                //{
-                //    string error;
-                //    string morphchars = App.f.C.MorphChars;
-                //    for (int x = 0; x < matrixBox.Text.Length; x++)
-                //    {
-                //        if (!morphchars.Contains(matrixBox.Text[x]))
-                //        {
-                //            error = "Protein Matrix contains obscure characters. Only ";// or the chosen gap and missing characters permitted.");
-                //            for (int r = 0; r < morphchars.Length; r++)
-                //            {
-                //                error += morphchars[r] + ", ";
-                //            }
-                //            error += "or the chosen gap and missing characters permitted.";
-                //            stringErrors.Add(error);
-                //            error = "";
-                //            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
-                //            break;
-                //        }
-                //    }
-
-                //}
-                //else if (App.f.C.dataSelection  ==3)
-                //{
-                //    List<char> charList = new List<char> { 'G', 'g', 'A', 'a', 'T', 't', 'C', 'c', App.f.C.gapChar, App.f.C.missingChar };
-                //    for(int x=0; x< matrixBox.Text.Length; x++)
-                //    {
-                //        if(!charList.Contains(matrixBox.Text[x]))
-                //        {
-                //            stringErrors.Add("Protein Matrix contains obscure characters. Only G,A,T,C or the chosen gap and missing characters permitted.");
-                //            DataText[i].Background = new SolidColorBrush(Colors.LightSalmon);
-                //            break;
-                //        }
-                //    }
-                   
-                //}
-            }
+            MatrixLostFocusEvent(sender, e);
+            TaxaLostFocusEvent(sender, e);
             if (stringErrors.Count > 0)
-            {                
+            {
                 TextBox ErrorText = new TextBox();
                 ErrorText.Name = "errors";
                 ErrorText.Width = 300;
@@ -312,34 +230,150 @@ namespace Prototype
             }
             else
             {
-                //add to nexus  //add data to general nexus file and pass tp Page3.xaml
-          //  App.f.C = new Seq();
-            List<String> TaxaStrings = new List<String>();
-            List<String> DataStrings = new List<String>();
-                
+                List<String> TaxaStrings = new List<String>();
+                List<String> DataStrings = new List<String>();
+
                 App.f.C.sequences = new List<Sequence>();
-            foreach (TextBox s in TaxaText)
-            {
-                TaxaStrings.Add(s.Text);
+                foreach (TextBox s in TaxaText)
+                {
+                    TaxaStrings.Add(s.Text);
+                }
+                foreach (TextBox s in DataText)
+                {
+                    DataStrings.Add(s.Text);
+                }
+                for (int i = 0; i < numOfTaxaPanels; i++)
+                {
+                    App.f.C.sequences.Add(new Sequence(TaxaStrings[i], DataStrings[i]));
+                }
             }
-            foreach (TextBox s in DataText)
-            {
-                DataStrings.Add(s.Text);
-            }
-            for (int i = 0; i < numOfTaxaPanels; i++)
-            {
-                App.f.C.sequences.Add(new Sequence(TaxaStrings[i], DataStrings[i]));
-            }
-                // this.Frame.Navigate(typeof(Page3));
-
-                this.Frame.Navigate(typeof(PreviewFile), App.f.C);
-            }
-          
-
-            //NavigationService nav = NavigationService.GetNavigationService(this);
-            //nav.Navigate(new Page3());
         }
+        
+        private void TaxaLostFocusEvent(object sender, RoutedEventArgs e)
+        {
+            TextBox TaxaBox = (TextBox)sender;
+            TaxaBox.Background = new SolidColorBrush(Colors.LightGray);
+            if (string.IsNullOrEmpty(TaxaBox.Text))
+            {
+                taxaErrors.Add(TaxaBox);
+                stringErrors.Add("Empty input value.");
+                TaxaBox.Background = new SolidColorBrush(Colors.LightSalmon);
+            }
+        }
+        private void MatrixLostFocusEvent(object sender, RoutedEventArgs e)
+        {
+                TextBox matrixBox = (TextBox)sender;
+            matrixBox.Background = new SolidColorBrush(Colors.LightGray);
+            if (string.IsNullOrEmpty(matrixBox.Text))
+                {
+                    taxaErrors.Add(matrixBox);
+                    stringErrors.Add("Empty input value.");
+                matrixBox.Background = new SolidColorBrush(Colors.LightSalmon);
+                }
+                else if (matrixBox.Text.Length != charLength)
+                {
+                    stringErrors.Add("Matrix doesn't have " + charLength + " characters. Needs " + (charLength - matrixBox.Text.Length) + " more characters");
+                matrixBox.Background = new SolidColorBrush(Colors.LightSalmon);
 
-       
+
+                }
+                else if (App.f.C.dataSelection == 1)//DNA
+                {
+                     List<char> charList = new List<char> { 'G', 'A',  'T',  'C', App.f.C.gapChar, App.f.C.missingChar };
+                    string error;
+                    //  string seqchars = App.f.C.SequenceChars;//where
+                    matrixBox.Text = matrixBox.Text.ToUpper();
+                    for (int x = 0; x < matrixBox.Text.Length; x++)
+                    {
+                        if (!charList.Contains(matrixBox.Text[x]))
+                        {
+                            error = "DNA sequence contains obscure characters. Only A,C,T,G";
+                            error += "or the chosen gap and missing characters, repectively "  + App.f.C.gapChar + " and " +App.f.C.missingChar+ ", are permitted.";
+                            stringErrors.Add(error);
+                            error = "";
+                        matrixBox.Background = new SolidColorBrush(Colors.LightSalmon);
+                            break;
+                        }
+                    }
+
+                }
+                else if (App.f.C.dataSelection == 2)//RNA
+                {
+                    string error;
+                    List<char> charList = new List<char> { 'G', 'A', 'U', 'C', App.f.C.gapChar, App.f.C.missingChar };
+                    matrixBox.Text = matrixBox.Text.ToUpper();
+                    for (int x = 0; x < matrixBox.Text.Length; x++)
+                    {
+                        if (!charList.Contains(matrixBox.Text[x]))
+                        {
+                            error = "RNA sequence contains obscure characters. Only A, C, G, U ";
+                            error += "or the chosen gap and missing characters, repectively " + App.f.C.gapChar + " and " + App.f.C.missingChar + ", are permitted.";
+                            stringErrors.Add(error);
+                            error = "";
+                        matrixBox.Background = new SolidColorBrush(Colors.LightSalmon);
+                            break;
+                        }
+                    }
+
+                }
+                else if (App.f.C.dataSelection == 3)//Protein Data
+                {
+                    string error;
+                    List<char> charList = new List<char> { 'A', 'I', 'P', 'V', 'R', 'E', 'W', 'Z', 'J', 'C', 'L', 'S', 'F', 'Y', 'K', 'B', 'X',  App.f.C.gapChar, App.f.C.missingChar };//TODO: UPDATE CHARLIST FOR PROTEIN
+                    matrixBox.Text = matrixBox.Text.ToUpper();
+                    for (int x = 0; x < matrixBox.Text.Length; x++)
+                    {
+                        if (!charList.Contains(matrixBox.Text[x]))
+                        {
+                            error = "Protein sequence contains obscure characters. Only ";
+                            for (int r = 0; r < charList.Count - 2; r++)
+                            {
+                                error += charList[r] + ", ";
+                            }
+                            error += "or the chosen gap and missing characters, repectively " + App.f.C.gapChar + " and " + App.f.C.missingChar + ", are permitted.";
+                        matrixBox.Background = new SolidColorBrush(Colors.LightSalmon);
+                            stringErrors.Add(error);
+                            break;
+                        }
+                    }
+
+                }
+                else if (App.f.C.dataSelection == 4)//Morphilogical
+                {
+                    List<char> charList = new List<char> { 'G', 'A', 'T', 'C', App.f.C.gapChar, App.f.C.missingChar };
+                    for (int x = 0; x < matrixBox.Text.Length; x++)
+                    {
+                        if (!charList.Contains(matrixBox.Text[x]))
+                        {
+                            stringErrors.Add("Protein Matrix contains obscure characters. Only G, A, T, C or the chosen gap and missing characters, repectively " + App.f.C.gapChar + " and " + App.f.C.missingChar + ", are permitted.");
+                        matrixBox.Background = new SolidColorBrush(Colors.LightSalmon);
+                            break;
+                        }
+                    }
+
+                }
+            
+            if (stringErrors.Count > 0)
+            {
+                TextBox ErrorText = new TextBox();
+                ErrorText.Name = "errors";
+                ErrorText.Width = 300;
+                ErrorText.Height = 300;
+                ErrorText.FontSize = 12;
+                ErrorText.TextWrapping = TextWrapping.Wrap;
+                ErrorText.Background = new SolidColorBrush(Colors.Gainsboro);
+                ErrorText.Text = "The following " + taxaErrors.Count + " errors must be fixed before you can continue: " + System.Environment.NewLine;
+                for (int i = 0; i < stringErrors.Count; i++)
+                {
+                    ErrorText.Text += stringErrors[i] + System.Environment.NewLine;
+                }
+                StackPanel s = new StackPanel();
+                s.Orientation = Orientation.Horizontal;
+                s.HorizontalAlignment = HorizontalAlignment.Center;
+                s.Children.Add(ErrorText);
+                ScrollError.Content = s;
+            }
+           
+        }
     }
 }

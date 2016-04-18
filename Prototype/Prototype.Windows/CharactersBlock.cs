@@ -12,13 +12,12 @@ namespace Shared_Code
         public int ncharValue;
         public char missingChar;
         public char gapChar;
-        public int dataSelection=0;
-        public string SequenceChars;
-        public string MorphChars;
+        public int dataSelection;
         public enum InputDataType {
-            Sequence=1,
-            Morphological=2,
+            DNA=1,
+            RNA = 2,
             Protein=3,
+            Morphological = 4
 
         };
     }
