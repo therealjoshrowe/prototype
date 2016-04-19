@@ -280,6 +280,7 @@ namespace Prototype
                 {
                     App.f.C.sequences.Add(new Sequence(TaxaStrings[i], DataStrings[i]));
                 }
+                this.Frame.Navigate(typeof(PreviewFile), App.f.C);
             }
         }
         
@@ -308,45 +309,11 @@ namespace Prototype
                 }
             
         }
-        private void removeOldError()
-        {
-            bool foundError = false;
-
-            for (int i = 0; i < stringErrors.Count; i++)
-            {
-                if (stringErrors[i].Substring(0, 6).Equals("Matrix"))
-                {
-                    stringErrors.Remove(stringErrors[i]);
-                }
-                else if (stringErrors[i].Substring(0, 2).Equals("DNA"))
-                {
-                    stringErrors.Remove(stringErrors[i]);
-
-                }
-                else if (stringErrors[i].Substring(0, 2).Equals("RNA"))
-                {
-                    stringErrors.Remove(stringErrors[i]);
-                }
-                else if (stringErrors[i].Substring(0, 2).Equals("Pro"))
-                {
-                    stringErrors.Remove(stringErrors[i]);
-                }
-                else if (stringErrors[i].Substring(0, 2).Equals("Mor"))
-                {
-                    stringErrors.Remove(stringErrors[i]);// Morphological
-                }
-            }
-        }
-
-
-
+        
         private void MatrixLostFocusEvent(object sender, RoutedEventArgs e)
         {
                 TextBox matrixBox = (TextBox)sender;
             matrixBox.Background = new SolidColorBrush(Colors.LightGray);
-            //if error already exsists, remove it
-            // removeOldError();
-            //stringErrors.Clear();
 
             if (tbErrors.Contains(matrixBox))
             {
