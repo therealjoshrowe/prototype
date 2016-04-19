@@ -296,10 +296,15 @@ namespace Prototype
                     stringErrors.Remove("Empty input value.");
                     TaxaBox.Name = "";
                 }
+                else if (TaxaBox.Name.Equals("error01"))
+                {
+                    stringErrors.Remove("Taxa names cannot begin with a number or a special character.");
+                }
             }
-
-
-                if (string.IsNullOrEmpty(TaxaBox.Text))
+           
+           
+           
+            if (string.IsNullOrEmpty(TaxaBox.Text))
                 {
                 // taxaErrors.Add(TaxaBox);
                 TaxaBox.Name = "error0";
@@ -307,7 +312,14 @@ namespace Prototype
                     tbErrors.Add(TaxaBox);
                     TaxaBox.Background = new SolidColorBrush(Colors.LightSalmon);
                 }
-            
+            if (!string.IsNullOrEmpty(TaxaBox.Text) && !Char.IsLetter(TaxaBox.Text[0]))
+            {
+                TaxaBox.Name = "error01";
+                tbErrors.Add(TaxaBox);
+                stringErrors.Add("Taxa names cannot begin with a number or a special character.");
+                TaxaBox.Background = new SolidColorBrush(Colors.LightSalmon);
+            }
+
         }
         
         private void MatrixLostFocusEvent(object sender, RoutedEventArgs e)

@@ -138,6 +138,18 @@ namespace Prototype
             {
                 if (dc.Children.Contains(TaxaText[i]))
                 {
+                    if (tbErrors.Contains(TaxaText[i]))
+                    {
+                        tbErrors.Remove(TaxaText[i]);
+                        if (TaxaText[i].Name.Equals("error0"))
+                        {
+                            errors.Remove("Empty Taxa value. Must enter Taxa or remove row.");
+                        }
+                        else if (TaxaText[i].Name.Equals("error1"))
+                        {
+                            errors.Remove("Taxa names cannot begin with a number or a special character.");
+                        }
+                    }
                     TaxaText.Remove(TaxaText[i]);
                 }
             }

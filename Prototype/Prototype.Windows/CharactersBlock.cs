@@ -13,6 +13,8 @@ namespace Shared_Code
         public char missingChar;
         public char gapChar;
         public int dataSelection;
+        public bool useSymbol;
+        public List<string> symbols;
         public enum InputDataType {
             DNA=1,
             RNA = 2,
@@ -20,5 +22,6 @@ namespace Shared_Code
             Morphological = 4
 
         };
+      
     }
 }

@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <StackPanel Margin="97,0,145,0" >
+        <StackPanel Margin="97,0,0,0" >
             
             <TextBox Name="title" Text="Character Information"  HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Background="Black" Foreground="Orange" FontSize="40"></TextBox>
 
@@ -18,27 +18,43 @@
 
                 <Button Name="btnNext" Content="Next"  Background="Orange" Foreground="Black" Click="btnNext_Click" Margin="900,0,0,0"></Button>
 </StackPanel>
-            <ScrollViewer Name ="ErrorScroll" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65" Margin="293,0,309,0"></ScrollViewer>
-            <StackPanel Orientation="Horizontal"  >
-                <TextBox x:Name="dataTypeLabel"  Text="What type data are you wanting to process?"   HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="0,0,200,50"/>
-                <ComboBox x:Name="comboBox" Width="200" Margin="0,0,200,50" LostFocus="ValidateDataType_Click">
+            <ScrollViewer Name ="ErrorScroll" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Height="65" Margin="293,0,309,20"></ScrollViewer>
+            <StackPanel Orientation="Horizontal" Margin="0,0,-86,0"  >
+                <TextBox x:Name="dataTypeLabel"  Text="What type data are you wanting to process?"   HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" Margin="0,0,150,50"/>
+                <ComboBox x:Name="comboBox" Width="200" Margin="0,0,10,50" LostFocus="ValidateDataType_Click">
                     <ComboBoxItem x:Name="cbi1" Content="DNA" />
                     <ComboBoxItem  x:Name="cbi2" Content="RNA"/>                    
                     <ComboBoxItem  x:Name="cbi3" Content="Protein"/>
                     <ComboBoxItem x:Name="cbi4" Content="Morphological"/>
                 </ComboBox>
+                <TextBox Name="AddSymbol" Text="Do you want to add symbols?"   HorizontalAlignment="Left"  TextWrapping="Wrap" Width="130" FontSize="18" Background="Black" Foreground="Orange" Margin="0,0,10,50"/>
+
+                <ComboBox x:Name="symbolBox" Width="100" Margin="0,0,10,50" LostFocus="ValidateDataType_Click">
+                    <ComboBoxItem x:Name="yes" Content="Yes" />
+                    <ComboBoxItem  x:Name="no" Content="No"/>
+                </ComboBox>
+                <TextBox Name="EnterSymbol" Text="Enter symbols:"   HorizontalAlignment="Left"  Height="40" TextWrapping="Wrap" FontSize="18" Background="Black" Foreground="Orange" Margin="0,0,10,50"/>
+
+                <ScrollViewer Name ="SymbolScroll" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled"  Width="180" Height="150">
+                    <!--<TextBox Name="symbolText" TextWrapping="Wrap" Height=" 45" VerticalAlignment="Top" FontSize="12"></TextBox>-->
+                    <StackPanel Name="spSymbol" >
+                        <!--<TextBox Name="symbolText" TextWrapping="Wrap" Height=" 45" VerticalAlignment="Top" FontSize="12"></TextBox>
+                        <Button  Name="btnRemove" Content="Remove" VerticalAlignment="Top"></Button>-->
+                    </StackPanel>
+                </ScrollViewer>
+                <Button Name="btnSymbol" Content="Add Symbol"  Background="Orange" Foreground="Black" Click="btnSymbol_Click" Margin="0,0,0,50"></Button>
 
             </StackPanel >
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="charNumLabel" Text="How many characters per matrix?"  Margin="0,0,200,50" HorizontalAlignment="Left" TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" />
+                <TextBox x:Name="charNumLabel" Text="How many characters per matrix?"  Margin="0,0,150,50" HorizontalAlignment="Left" TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" />
                 <TextBox x:Name="charNum" Width ="200" Margin="0,0,0,50" HorizontalAlignment="Left"  FontSize="24"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >
-                <TextBox x:Name="GapLabel" Text="Please choose a GAP character." Margin="0,0,200,50" HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200"  FontSize="24" Background="Black" Foreground="Orange" />
+                <TextBox x:Name="GapLabel" Text="Please choose a GAP character." Margin="0,0,150,50" HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200"  FontSize="24" Background="Black" Foreground="Orange" />
                 <TextBox x:Name="GapChar" Width ="200" HorizontalAlignment="Left" Margin="0,0,0,50" FontSize="24"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="MissingLabel" Text="Please choose a MISSING character." Margin="0,0,200,50" HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" />
+                <TextBox x:Name="MissingLabel" Text="Please choose a MISSING character." Margin="0,0,150,50" HorizontalAlignment="Left"  TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" />
                 <TextBox x:Name="MissingChar" Width ="200" Margin="0,0,0,50" FontSize="24"/>
             </StackPanel>
 
