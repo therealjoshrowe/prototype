@@ -14,6 +14,19 @@
             <TextBox Name="title" Text="Character Information"  HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Background="Black" Foreground="Orange" FontSize="40"></TextBox>
 
             <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnHelp" Content="?" IsEnabled="True" Background="Orange" Foreground="Black" Margin="0, 0, 20, 0" Click="btnHelp_Click">
+
+                </Button>
+                <Popup VerticalOffset="40" HorizontalOffset="0" x:Name="StandardPopup" VerticalAlignment="Top">
+                    <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                BorderThickness="2" Width="300" Height="650">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                            <TextBlock Name="HelpPopup" FontSize="16" HorizontalAlignment="Left" Margin="20,20,20,20"/>
+                            <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                </Popup>
                 <Button Name="btnBack" Content="Back"  Background="Orange" Foreground="Black" Click="btnBack_Click" Margin="0,0,0,0"></Button>
 
                 <Button Name="btnNext" Content="Next"  Background="Orange" Foreground="Black" Click="btnNext_Click" Margin="900,0,0,0"></Button>
@@ -46,7 +59,7 @@
 
             </StackPanel >
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="charNumLabel" Text="How many characters per matrix?"  Margin="0,0,150,50" HorizontalAlignment="Left" TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" />
+                <TextBox x:Name="charNumLabel" Text="How many character traits per matrix?"  Margin="0,0,150,50" HorizontalAlignment="Left" TextWrapping="Wrap" Width="200" FontSize="24" Background="Black" Foreground="Orange" />
                 <TextBox x:Name="charNum" Width ="200" Margin="0,0,0,50" HorizontalAlignment="Left"  FontSize="24"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" >

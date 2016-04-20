@@ -82,6 +82,14 @@ namespace Prototype
             btnSymbol.Visibility = Visibility.Collapsed;
             EnterSymbol.Visibility = Visibility.Collapsed;
             AddSymbol.Visibility = Visibility.Collapsed;
+
+            HelpPopup.TextWrapping = TextWrapping.Wrap;
+            HelpPopup.Text = "Step 1: Choose the type of data being entered into this Nexus file \n";
+            HelpPopup.Text += "\n Note: If you are entering Morphological data, you will then be given the option to setup symbols for your data matrix. However, symbols are not required.\n";
+            HelpPopup.Text += "\n Step 2: Enter the amount of character traits per taxa that this Nexus file will represent. \n";
+            HelpPopup.Text += "\n Step 3: Choose a GAP character. You are required to choose a GAP character to continue, however, you are not required to enter this GAP character into the data matrix. \n";
+            HelpPopup.Text += "\n Step 4: Choose a MISSING character. You are required to choose a MISSING character to continue, however, you are not required to enter this MISSING character into the data matrix. \n";
+            HelpPopup.Text += "\n Click 'Next' when finished entering the desired character information. \n";
         }
 
 
@@ -233,6 +241,7 @@ namespace Prototype
             }
             else
             {
+                x.Text = x.Text.ToUpper();
                 ErrorText.Visibility = Visibility.Collapsed;
                 ErrorText.Text = "";
             }
@@ -254,14 +263,14 @@ namespace Prototype
                 stringErrors.Add("Symbols must have a single letter following an equals sign in the format: 'A=(012)");
                 x.Background = new SolidColorBrush(Colors.LightSalmon);
             }
-            else if (tbString[1] != '=')
+            else if (tbString.Length>1 && tbString[1] != '=')
             {
                 x.Name = "error1";
                 symbolErrors.Add(x);
                 stringErrors.Add("Symbols must have a single letter following an equals sign in the format: 'A=(012)");
                 x.Background = new SolidColorBrush(Colors.LightSalmon);
             }
-            else if (tbString[2] != '(' || tbString[tbString.Length - 1] != ')')
+            else if (tbString.Length > 2 && tbString[2] != '(' || tbString[tbString.Length - 1] != ')')
             {
                 x.Name = "error2";
                 symbolErrors.Add(x);
@@ -540,6 +549,16 @@ namespace Prototype
            (dc.Parent as StackPanel).Children.Remove(dc);
             
             //remove the textboxes from the list of textboxes a the tpo
+        }
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+        }
+        private void ClosePopupClicked(object sender, RoutedEventArgs e)
+        {
+            // if the Popup is open, then close it 
+
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
         }
     }
 }

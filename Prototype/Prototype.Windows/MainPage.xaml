@@ -12,7 +12,20 @@
         <!--<Button x:Name="btnNext" Content="Next" HorizontalAlignment="Center"   Background="Orange" Foreground="Black" Click="btnNext_Click" FontSize="24" />-->
 
 
-        <StackPanel Orientation="Horizontal" Margin="100,0,55,700">
+        <StackPanel Orientation="Horizontal" Margin="54,0,55,700">
+            <Button x:Name="btnHelp" Content="?" IsEnabled="True" Background="Orange" Foreground="Black" Margin="0, 0, 20, 0" Click="btnHelp_Click">
+                
+            </Button>
+            <Popup VerticalOffset="40" HorizontalOffset="0" x:Name="StandardPopup" VerticalAlignment="Top">
+                <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                BorderThickness="2" Width="300" Height="400">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                        <TextBlock Name="HelpPopup" FontSize="16" HorizontalAlignment="Left" Margin="20,20,20,20"/>
+                        <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Border>
+            </Popup>
             <TextBox Text="Taxa Count: " HorizontalAlignment="Left" FontSize="14" Height="25" Background="Black" Foreground="Orange"></TextBox>
             <TextBox Name="TaxaCount" Text="0" HorizontalAlignment="Left" TextAlignment="Center" FontSize="14" Height="25" Background="Black" Foreground="Orange"></TextBox>
 
@@ -25,7 +38,7 @@
             </ScrollViewer>
         </StackPanel>
         <StackPanel x:Name="TintPanelForAddTaxaButton" Margin="200,180,200,473">
-            <Button x:Name="btnAddTaxa" Content="Add Taxa" IsEnabled="True" Background="Orange" HorizontalAlignment="Center" Foreground="Black" Margin="0, 0, 0, 0" Click="btnAdd_Click"/>
+            <Button x:Name="btnAddTaxa" Content="Add Taxa" IsEnabled="True" Background="Orange" HorizontalAlignment="Center" Foreground="Black" Margin="0, 0, 0, 0" Click="btnAdd_Click" ToolTipService.ToolTip="{ThemeResource ToolTipForegroundThemeBrush}"/>
 
         </StackPanel>
         <ScrollViewer  x:Name ="ScrollTaxa" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" Margin="150,300,150,100">

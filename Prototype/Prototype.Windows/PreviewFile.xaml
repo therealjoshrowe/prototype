@@ -12,7 +12,20 @@
             
         </TextBox>
         <StackPanel Orientation="Horizontal" Margin="0,90,0,0">
-            <Button Name="btnBack" Content ="Back" Background="Orange" Foreground="Black" Click="btnBack_Click" VerticalAlignment="Top" Margin="50,0"></Button>
+            <Button x:Name="btnHelp" Content="?" IsEnabled="True" Background="Orange" Foreground="Black" VerticalAlignment="Top" Margin="30, 0, 0, 0" Click="btnHelp_Click">
+
+            </Button>
+            <Popup VerticalOffset="40" HorizontalOffset="0" x:Name="StandardPopup" VerticalAlignment="Top">
+                <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                BorderThickness="2" Width="300" Height="400">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                        <TextBlock Name="HelpPopup" FontSize="16" HorizontalAlignment="Left" Margin="20,20,20,20"/>
+                        <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Border>
+            </Popup>
+            <Button Name="btnBack" Content ="Back" Background="Orange" Foreground="Black" Click="btnBack_Click" VerticalAlignment="Top" Margin="20,0"></Button>
             <Button Name="btnNext" Content ="Next" Background="Orange" Foreground="Black" Click="btnNext_Click" VerticalAlignment="Top" Margin="1010,0"></Button>
         </StackPanel>
         <StackPanel Margin="120,0,120,0">

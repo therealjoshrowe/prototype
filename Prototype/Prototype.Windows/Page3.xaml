@@ -8,7 +8,22 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="button" Content="Create NEXUS File" HorizontalAlignment="Center" Margin="38,85,0,0" VerticalAlignment="Center" Width="226" Click="button_Click" Height="73"/>
+        <Button x:Name="btnHelp" Content="?" IsEnabled="True" Background="Orange" Foreground="Black" VerticalAlignment="Top" Margin="70, 50, 0, 0" Click="btnHelp_Click">
 
+        </Button>
+        <Popup VerticalOffset="40" HorizontalOffset="0" x:Name="StandardPopup" VerticalAlignment="Top">
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                BorderThickness="2" Width="300" Height="400">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                    <TextBlock Name="HelpPopup" FontSize="16" HorizontalAlignment="Left" Margin="20,20,20,20"/>
+                    <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </Popup>
+        <Button x:Name="button" Content="Create NEXUS File" HorizontalAlignment="Center" Margin="38,85,0,0" VerticalAlignment="Center" Width="226" Click="button_Click" Height="73"/>
+        <Button x:Name="btnBack" Content="Back" IsEnabled="True" Background="Orange" Foreground="Black" VerticalAlignment="Top" Margin="120, 50, 0, 0" Click="btnBack_Click">
+
+        </Button>
     </Grid>
 </Page>

@@ -66,6 +66,13 @@ namespace Prototype
             sp.Children.Add(ErrorText);
             ScrollError.Content = sp;
 
+            HelpPopup.TextWrapping = TextWrapping.Wrap;
+            HelpPopup.Text = "Click the 'Add Taxa' button to add the taxa you want to represent in your Nexus file. \n";
+            HelpPopup.Text += "\n Note: Taxa names must being with a letter. \n";
+            HelpPopup.Text += "\n The 'Taxa Count dialogue will keep count of how many taxa you currently have entered on the form. \n";
+
+            HelpPopup.Text += "\n Click 'Next' when finished entering the desired taxa. \n";
+
         }
         private void LoadPreviousDataToScreen(CharactersBlock charBlock)
         {
@@ -254,8 +261,16 @@ namespace Prototype
 
         }
 
-
-
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+        }
+        private void ClosePopupClicked(object sender, RoutedEventArgs e)
+        {
+            // if the Popup is open, then close it 
+            
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+        }
 
 
     }

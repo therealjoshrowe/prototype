@@ -73,6 +73,43 @@ namespace Prototype
             s.Children.Add(ErrorText);
             ScrollError.Content = s;
 
+            HelpPopup.TextWrapping = TextWrapping.Wrap;
+            HelpPopup.Text = "Step 1: Begin entering your character traits for each taxa \n";
+            HelpPopup.Text += "\n Note: You specified " + App.f.C.ncharValue + " character traits on the previous screen. To continue, you will need to enter exactly " + App.f.C.ncharValue + " traits. \n";
+            switch(App.f.C.dataSelection)
+            {
+                case 1:
+                    HelpPopup.Text += "\n Note: You specified DNA data on the previous screen, so you may only enter 'A', 'C', 'G', 'T', or your chosen GAP and MISSING characters '" + App.f.C.gapChar + "' or '" + App.f.C.missingChar + "'. \n";
+                    break;
+                case 2:
+                    HelpPopup.Text += "\n Note: You specified RNA data on the previous screen, so you may only enter 'A', 'C', 'G', 'U', or your chosen GAP and MISSING characters '" + App.f.C.gapChar + "' or '" + App.f.C.missingChar + "'. \n";
+                    break;
+                case 3:
+                    HelpPopup.Text += "\n Note: You specified Protein data on the previous screen, so you may only enter 'A', 'I', 'P', 'V', 'R', 'E', 'W', 'Z', 'J', 'C', 'L', 'S', 'F', 'Y', 'K', 'B', 'X', or your chosen GAP and MISSING characters '" + App.f.C.gapChar + "' or '" + App.f.C.missingChar + "'. \n";
+                    break;
+                case 4:
+                    List<char> charList = new List<char> { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', App.f.C.gapChar, App.f.C.missingChar };
+                    foreach (var x in App.f.C.symbols)
+                    {
+                        charList.Add(x[0]);
+                    }
+                    HelpPopup.Text += "\n Note: You specified Morphological data on the previous screen, so you may only enter numbers 0-9";
+                    if (charList.Count > 12)
+                    {
+                        HelpPopup.Text += ", the specified symbols  ";
+                        for (int i = 12; i < charList.Count(); i++)
+                        {
+                            HelpPopup.Text += charList[i] + ", ";
+                        }
+                    }
+                    HelpPopup.Text += " or your chosen GAP and MISSING characters '" + App.f.C.gapChar + "' or '" + App.f.C.missingChar + "'. \n";
+
+                    break;
+            }
+            HelpPopup.Text += "\n Note: You have the option to edit the taxa names that match with the data matrix.  \n";
+            HelpPopup.Text += "\n Note: You also have the option to add a new taxa and data matrix. This new taxa will also have to entered based on the restrictions set on the Character Information screen. \n";
+            HelpPopup.Text += "\n Click 'Next' when finished entering the desired data matrix information. \n";
+
         }
         public void DynamicText(List<String> x)
         {
@@ -118,6 +155,7 @@ namespace Prototype
                 tbData.FontSize = 14;
                 tbData.Background = new SolidColorBrush(Colors.LightGray);
                 tbData.TextWrapping = TextWrapping.Wrap;
+                
                 tbData.LostFocus += new RoutedEventHandler(MatrixLostFocusEvent);
                 DataText.Add(tbData);
 
@@ -178,6 +216,7 @@ namespace Prototype
             tbTaxa.FontSize = 14;
             tbTaxa.Foreground = new SolidColorBrush(Colors.Orange);
             tbTaxa.Background = new SolidColorBrush(Colors.Black);
+            tbTaxa.LostFocus += new RoutedEventHandler(TaxaLostFocusEvent);
             // tbTaxa.Padding = 15;
             TaxaText.Add(tbTaxa);
 
@@ -196,6 +235,7 @@ namespace Prototype
             tbData.FontSize = 14;
             tbData.Background = new SolidColorBrush(Colors.LightGray);
             tbData.TextWrapping = TextWrapping.Wrap;
+            tbData.LostFocus += new RoutedEventHandler(MatrixLostFocusEvent);
             DataText.Add(tbData);
 
             Button btnRemove = new Button();
@@ -276,7 +316,7 @@ namespace Prototype
                 {
                     DataStrings.Add(s.Text);
                 }
-                for (int i = 0; i < numOfTaxaPanels; i++)
+                for (int i = 0; i < TaxaStrings.Count; i++)
                 {
                     App.f.C.sequences.Add(new Sequence(TaxaStrings[i], DataStrings[i]));
                 }
@@ -465,16 +505,33 @@ namespace Prototype
                 else if (App.f.C.dataSelection == 4)//Morphilogical: 0-9 and symbols
                 {
                     List<char> charList = new List<char> { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', App.f.C.gapChar, App.f.C.missingChar };
+                matrixBox.Text = matrixBox.Text.ToUpper();
+                foreach (var x in App.f.C.symbols)
+                {
+                    charList.Add(x[0]);
+                }
                     for (int x = 0; x < matrixBox.Text.Length; x++)
                     {
-                        if (!charList.Contains(matrixBox.Text[x]))
-                        {
+                    if (!charList.Contains(matrixBox.Text[x]))
+                    {
                         tbErrors.Add(matrixBox);
                         matrixBox.Name = "error5";
-                        stringErrors.Add("Morphological Matrix contains obscure characters. Only 0-9 or the chosen gap and missing characters, repectively " + App.f.C.gapChar + " and " + App.f.C.missingChar + ", are permitted.");
-                            matrixBox.Background = new SolidColorBrush(Colors.LightSalmon);
-                            break;
+                        string error = "Morphological Matrix contains obscure characters. Only 0-9";
+                        if (charList.Count > 12)
+                        {
+                            error += ", the specified symbols  ";
+                            for (int i = 12; i < charList.Count(); i++)
+                            {
+                                error += charList[i] + ", ";
+                            }
                         }
+                        error += " or the chosen gap and missing characters, repectively " + App.f.C.gapChar + " and " + App.f.C.missingChar + ", are permitted.";
+
+                        stringErrors.Add(error);
+                        matrixBox.Background = new SolidColorBrush(Colors.LightSalmon);
+                        break;
+                    }
+                        
                     }
 
                 }
@@ -497,6 +554,16 @@ namespace Prototype
                 ErrorText.Text = "";
             }
            
+        }
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+        }
+        private void ClosePopupClicked(object sender, RoutedEventArgs e)
+        {
+            // if the Popup is open, then close it 
+
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
         }
     }
 }

@@ -38,6 +38,10 @@ namespace Prototype
             {
                 txtNexus.Text += content[i];
             }
+            HelpPopup.TextWrapping = TextWrapping.Wrap;
+            HelpPopup.Text = "This page allows you to view what the Nexus files will look like before downloading said file. \n";
+            HelpPopup.Text += "\n Click 'Next' when ready to download your Nexus file. \n";
+
 
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -47,6 +51,16 @@ namespace Prototype
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Page3), App.f.C);
+        }
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+        }
+        private void ClosePopupClicked(object sender, RoutedEventArgs e)
+        {
+            // if the Popup is open, then close it 
+
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
         }
     }
 }
