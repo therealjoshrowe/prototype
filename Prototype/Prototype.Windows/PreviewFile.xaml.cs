@@ -23,12 +23,19 @@ namespace Prototype
     /// </summary>
     public sealed partial class PreviewFile : Page
     {
+        /// <summary>
+        /// Captures Model obj
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             App.f.C = new CharactersBlock();
             App.f.C = e.Parameter as CharactersBlock;
             
         }
+        /// <summary>
+        /// Constructor: initializes NexusWriter and 'Help' popup
+        /// </summary>
         public PreviewFile()
         {
             this.InitializeComponent();
@@ -44,18 +51,38 @@ namespace Prototype
 
 
         }
+        /// <summary>
+        /// Navigates back to the Matrix Data page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(SequenceDataInput), App.f.C);
         }
+        /// <summary>
+        /// Moves forward to the 'Create Nexus File' page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Page3), App.f.C);
         }
+        /// <summary>
+        /// Opens 'Help' popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
         }
+        /// <summary>
+        /// Closes 'help' popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClosePopupClicked(object sender, RoutedEventArgs e)
         {
             // if the Popup is open, then close it 

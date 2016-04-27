@@ -118,9 +118,6 @@
     <Compile Include="NexusFile.cs" />
     <Compile Include="NexusWriter.cs" />
     <Compile Include="NexusXMLWriter.cs" />
-    <Compile Include="Page2.xaml.cs">
-      <DependentUpon>Page2.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Page3.xaml.cs">
       <DependentUpon>Page3.xaml</DependentUpon>
     </Compile>
@@ -157,10 +154,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Page2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

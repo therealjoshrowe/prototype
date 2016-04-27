@@ -20,7 +20,7 @@ using Windows.UI.Xaml.Navigation;
 namespace Prototype
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Matrix Data Page
     /// </summary>
     public sealed partial class SequenceDataInput : Page
     {
@@ -32,7 +32,10 @@ namespace Prototype
         List<TextBox> taxaErrors;
         List<String> stringErrors;
         TextBox ErrorText;
-
+        /// <summary>
+        /// Captures Model obj passed to this page
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             App.f.C = new CharactersBlock();
@@ -50,6 +53,12 @@ namespace Prototype
             }
             DynamicText(App.f.C.taxa);
         }
+        /// <summary>
+        /// Constructor initializing:
+        /// --Error text
+        /// --Help popup
+        /// --Specific info from Characters page that has been entered into 'Help' popup
+        /// </summary>
         public SequenceDataInput()
         {
             this.InitializeComponent();
@@ -111,6 +120,10 @@ namespace Prototype
             HelpPopup.Text += "\n Click 'Next' when finished entering the desired data matrix information. \n";
 
         }
+        /// <summary>
+        /// Creates the current number of taxa's maxtrix intput textboxes
+        /// </summary>
+        /// <param name="x"></param>
         public void DynamicText(List<String> x)
         {
             this.InitializeComponent();
@@ -180,6 +193,11 @@ namespace Prototype
             }
             ScrollSeq.Content = SeqFrame;
         }
+        /// <summary>
+        /// removes a row of taxa/matrix data entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             //remove the stackpanel that this button is located in
@@ -200,6 +218,11 @@ namespace Prototype
             (dc.Parent as StackPanel).Children.Remove(dc);
             //remove the textboxes from the list of textboxes a the tpo
         }
+        /// <summary>
+        /// Adds a new row for taxa/matrix data entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             //add stackpanel with text boxes and remove button
@@ -259,10 +282,19 @@ namespace Prototype
             ScrollSeq.Content = SeqFrame;
             //add textboxes to list above so they can be validated
         }
+        /// <summary>
+        /// Navigates back to the Characters page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CharactersPage), App.f.C);
         }
+        /// <summary>
+        /// Finds if there are empty input boxes on screen
+        /// Mostly used to validate if user never clicks a textbox then tries to hit next
+        /// </summary>
         private void GetEmptyTextBoxes()
         {
             foreach (var x in TaxaText)
@@ -285,7 +317,11 @@ namespace Prototype
                 }
             }
         }
-
+        /// <summary>
+        /// If errors exist, show Error text, otherwise navigate to PreviewFile page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
         //    MatrixLostFocusEvent(sender, e);
@@ -323,7 +359,11 @@ namespace Prototype
                 this.Frame.Navigate(typeof(PreviewFile), App.f.C);
             }
         }
-        
+        /// <summary>
+        /// Validates Taxa text box on LostFocus event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TaxaLostFocusEvent(object sender, RoutedEventArgs e)
         {
             TextBox TaxaBox = (TextBox)sender;
@@ -361,7 +401,11 @@ namespace Prototype
             }
 
         }
-        
+        /// <summary>
+        /// Validates Matrix text box on LostFocus event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MatrixLostFocusEvent(object sender, RoutedEventArgs e)
         {
                 TextBox matrixBox = (TextBox)sender;
@@ -555,10 +599,20 @@ namespace Prototype
             }
            
         }
+        /// <summary>
+        /// Opens 'Help' popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
         }
+        /// <summary>
+        /// Closes 'Help' popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClosePopupClicked(object sender, RoutedEventArgs e)
         {
             // if the Popup is open, then close it 

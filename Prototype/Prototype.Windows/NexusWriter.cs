@@ -12,11 +12,18 @@ namespace Prototype
     class NexusWriter
     {
         private NexusFile nexusOb;
+        /// <summary>
+        /// Constructor: accepts Nexus file
+        /// </summary>
+        /// <param name="n"></param>
         public NexusWriter(NexusFile n)
         {
             nexusOb = n;
         }
-
+        /// <summary>
+        /// Writes Model obj data to .nex file
+        /// </summary>
+        /// <returns></returns>
         public async Task WriteToFile()
         {
             FileSavePicker fp = new FileSavePicker();
@@ -60,7 +67,10 @@ namespace Prototype
 
 
         }
-
+        /// <summary>
+        /// Prepares the constant Nexus strings
+        /// </summary>
+        /// <returns></returns>
         public List<string> PreprareNexusString()
         {
             List<String> info = new List<String>();

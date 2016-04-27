@@ -22,7 +22,7 @@ using Windows.UI.Xaml.Navigation;
 namespace Prototype
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The Characters Page
     /// </summary>
     public sealed partial class CharactersPage : Page
     {
@@ -31,10 +31,13 @@ namespace Prototype
         private List<TextBox> symbolErrors;
         private TextBox ErrorText;
         private StackPanel s;
+
+        /// <summary>
+        /// Captures Model obj to be usable on this page
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
-        {///set symbols to look like A=(012)
-           
-            //TOOL TIPS FOR EACH PAGE
+        {
             App.f.C = new CharactersBlock();
             App.f.C = e.Parameter as CharactersBlock;
             if (!string.IsNullOrEmpty(App.f.C.ncharValue.ToString()) || !string.IsNullOrEmpty(App.f.C.missingChar.ToString()) || !string.IsNullOrEmpty(App.f.C.gapChar.ToString()))
@@ -42,6 +45,13 @@ namespace Prototype
                 LoadPreviousDataToScreen(App.f.C);
             }
         }
+        /// <summary>
+        /// Constructor initializing:
+        /// --static lostfocus events
+        /// --the Error textbox
+        /// -- hiden extra choices available if Morphilogical data is selected
+        /// --Help popup button info
+        /// </summary>
         public CharactersPage()
         {
             this.InitializeComponent();
@@ -92,7 +102,10 @@ namespace Prototype
             HelpPopup.Text += "\n Click 'Next' when finished entering the desired character information. \n";
         }
 
-
+/// <summary>
+/// If data is present in the Model obj, reloads that data onto the screen
+/// </summary>
+/// <param name="charBlock"></param>
         private void LoadPreviousDataToScreen(CharactersBlock charBlock)
         {
             // ((ComboBoxItem)comboBox.SelectedItem).SetValue(App.f.C.dataSelection);
@@ -111,6 +124,9 @@ namespace Prototype
 
            
         }
+        /// <summary>
+        /// Enables the Error textbox to be visible and shows current errors
+        /// </summary>
         private void EnableErrorScroll()
         {
             ErrorText.Visibility = Visibility.Visible;
@@ -123,7 +139,11 @@ namespace Prototype
             }
 
         }
-        
+        /// <summary>
+        /// Validates the Data Type combo box after LostFocus event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ValidateDataType_Click(object sender, RoutedEventArgs e)
         {
             //turn everything back to gray
@@ -161,6 +181,11 @@ namespace Prototype
                 comboBox.Background = new SolidColorBrush(Colors.LightGray);
             }
         }
+        /// <summary>
+        /// Validates Symbol combo box after LostFocus event and initializes controls to add symbols
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ValidateSymbolBox_Click(object sender, RoutedEventArgs e)
         {
             
@@ -210,6 +235,11 @@ namespace Prototype
            
            
         }
+        /// <summary>
+        /// Validates Symbol text box after LostFocus event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SymbolTextLostFocus(object sender, RoutedEventArgs e)
         {
             var x = (TextBox)sender;
@@ -247,6 +277,11 @@ namespace Prototype
             }
 
         }
+        /// <summary>
+        /// Validates the Symbol string. Called from SymbolTextLostFocus
+        /// </summary>
+        /// <param name="tbString"></param>
+        /// <param name="x"></param>
         private void ValidateSymbolString(string tbString, TextBox x)
         {
             if (string.IsNullOrEmpty(tbString))
@@ -297,6 +332,11 @@ namespace Prototype
                 }
             }
         }
+        /// <summary>
+        /// Validates the number of characters option after LostFocus event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ValidateCharNum_Click(object sender, RoutedEventArgs e)
         {
             int nCharNum;
@@ -332,6 +372,11 @@ namespace Prototype
                 charNum.Background = new SolidColorBrush(Colors.LightGray);
             }
         }
+        /// <summary>
+        /// Validates Gap char text box after LostFocus event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ValidateGapChar_Click(object sender, RoutedEventArgs e)
         {//()[]{} / \ , ; : = * '  ` < > ^
             GapChar.Background = new SolidColorBrush(Colors.LightGray);
@@ -376,6 +421,11 @@ namespace Prototype
                 GapChar.Background = new SolidColorBrush(Colors.LightGray);
             }
         }
+        /// <summary>
+        /// Validates Missing char text box after LostFocus event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ValidateMissingChar_Click(object sender, RoutedEventArgs e)
         {
             MissingChar.Background = new SolidColorBrush(Colors.LightGray);
@@ -419,6 +469,11 @@ namespace Prototype
                 MissingChar.Background = new SolidColorBrush(Colors.LightGray);
             }
         }
+        /// <summary>
+        /// Calls all validate methods again and if no errors occur, go to next page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {           
             if (stringErrors.Count() == 0)
@@ -435,6 +490,9 @@ namespace Prototype
                 
             }
         }
+        /// <summary>
+        /// Validate Symbol strings then if valid, add to Model obj
+        /// </summary>
         private void EstablishFinalSymbols()
         {
             if (App.f.C.useSymbol)
@@ -485,11 +543,20 @@ namespace Prototype
                 }
             }
         }
+        /// <summary>
+        /// Returns back to the Taxa page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {//Goes back to Taxa Page
             this.Frame.Navigate(typeof(MainPage), App.f.C);
         }
-
+        /// <summary>
+        /// Adds a new text box and remove button to enter another symbol
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSymbol_Click(object sender, RoutedEventArgs e)
         {
             TextBox tbSymbol = new TextBox();
@@ -517,6 +584,11 @@ namespace Prototype
 
             SymbolScroll.Content = spSymbol;
         }
+        /// <summary>
+        /// Remove the Symbol entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             //remove the stackpanel that this button is located in
@@ -550,10 +622,20 @@ namespace Prototype
             
             //remove the textboxes from the list of textboxes a the tpo
         }
+        /// <summary>
+        /// Opens 'Help' popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
         }
+        /// <summary>
+        /// Closes 'Help' popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClosePopupClicked(object sender, RoutedEventArgs e)
         {
             // if the Popup is open, then close it 

@@ -30,6 +30,11 @@ namespace Prototype
         private List<TextBox> tbErrors = new List<TextBox>();
         private TextBox ErrorText;
         private StackPanel sp;
+
+        /// <summary>
+        /// Captures Model obj to be usable on this page
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             App.f = new NexusFile();
@@ -42,7 +47,11 @@ namespace Prototype
             }
             //  DynamicText(Taxa);
         }
-
+        /// <summary>
+        /// Constructor initializing:
+        /// -- Error text box
+        /// -- Help popup
+        /// </summary>
         public MainPage()
         {
             this.InitializeComponent();
@@ -74,6 +83,10 @@ namespace Prototype
             HelpPopup.Text += "\n Click 'Next' when finished entering the desired taxa. \n";
 
         }
+        /// <summary>
+        /// If data is present in the Model obj, reloads that data onto the screen
+        /// </summary>
+        /// <param name="charBlock"></param>
         private void LoadPreviousDataToScreen(CharactersBlock charBlock)
         {
             var fields = charBlock.taxa.Count;
@@ -99,7 +112,11 @@ namespace Prototype
             }
         }
 
-   
+   /// <summary>
+   /// Validates current taxa text boxes. Either makes Error text visible or adds taxa to model obj and navigates to Characters Page
+   /// </summary>
+   /// <param name="sender"></param>
+   /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             bool canContinue = true;
@@ -135,7 +152,11 @@ namespace Prototype
                        
         }
 
-
+        /// <summary>
+        /// Removes selected Taxa entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             //remove the stackpanel that this button is located in
@@ -166,6 +187,11 @@ namespace Prototype
             TaxaCount.Text = TaxaText.Count.ToString();
             //remove the textboxes from the list of textboxes a the tpo
         }
+        /// <summary>
+        /// Validates Taxa input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TaxaLostFocus(object sender, RoutedEventArgs e)
         {
             var x = (TextBox)sender;
@@ -210,6 +236,9 @@ namespace Prototype
             }
 
         }
+        /// <summary>
+        /// Enables Error Text box
+        /// </summary>
         private void EnableErrorScroll()
         {
             ErrorText.Visibility = Visibility.Visible;
@@ -222,6 +251,11 @@ namespace Prototype
             }
 
         }
+        /// <summary>
+        /// Adds a row for Taxa entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             //add stackpanel with text boxes and remove button
@@ -260,11 +294,20 @@ namespace Prototype
             TaxaCount.Text = TaxaText.Count.ToString();
 
         }
-
+        /// <summary>
+        /// Opens 'Help' popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
         }
+        /// <summary>
+        /// Closes 'Help' popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClosePopupClicked(object sender, RoutedEventArgs e)
         {
             // if the Popup is open, then close it 
